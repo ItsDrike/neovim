@@ -1,0 +1,12 @@
+# Vim's personal spell database
+spell/
+
+# Compiled/generated lua files
+lua/compiled/
+
+# Backup files
+*.bak
+
+# Personal todo file
+TODO
+
