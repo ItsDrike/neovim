@@ -27,3 +27,19 @@ Note: I've manually copied the git history affecting `home/.config/nvim` from my
 that there is still a stable record of what was done to my neovim configuration and when. This however doesn't include
 my old vim configuration because it was in `home/.vimrc` instead, so if you are interested in that, you can still check
 the original commit history in my dotfiles repository.
+
+## Attribution
+
+The open-source community has an incredible amount of resources that people have offered to others free of charge and
+we all depend on many of these sources. This project is no different and there were many open-source projects that were
+utilized in some parts of this project. For that reason, I'd like to thank all of these projects and their contributors
+for keeping their content open and available to everyone. This is the list of projects that helped me build this
+repository to the stage it's in now. Many of the aliases, config files and other resources aren't my original
+creations, but rather just small improvements and adjustments to get everything set in the way I like. Below is the
+list of all projects which helped the existence of this repository:
+
+- [Lukesmith's dotfiles/voidrice](https://github.com/LukeSmithxyz/voidrice)
+- [Jess Archer's dotfiles](https://github.com/jessarcher/dotfiles)
+- [lspsaga nvim plugin](https://github.com/glepnir/lspsaga.nvim)
+- [CosmicVim](https://github.com/CosmicNvim/CosmicNvim)
+- [LunarVim](https://github.com/LunarVim/LunarVim)
