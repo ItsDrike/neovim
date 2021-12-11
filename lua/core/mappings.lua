@@ -99,7 +99,7 @@ m.keymap("n", "<leader>s", ":setlocal spell! spelllang=en_us<CR>")
 m.keymap("n", "<leader>p", ":!shellckeck %<CR>")
 
 -- Compile opened file (using custom script)
-m.keymap("n", "<A-c>", ":w | !comp <c-r>%<CR>")
+m.keymap("n", "<A-C>", ":w | !comp <c-r>%<CR>")
 
 -- Close all opened buffers
 m.keymap("n", "<leader>Q", ":bufdo bdelete<CR>")
