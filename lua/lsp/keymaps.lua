@@ -48,6 +48,8 @@ m.keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>'
 m.keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>')
 
 --Actions
+m.keymap('n', '<leader>ga', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+m.keymap('v', '<leader>ga', '<cmd>lua require("telescope.builtin").range_code_action()<cr>')
 if telescope_installed then
     m.keymap('n', '<leader>ga', '<cmd>lua require("telescope.builtin").lsp_code_actions()<cr>')
     m.keymap('v', '<leader>ga', '<cmd>lua require("telescope.builtin").lsp_range_code_actions()<cr>')
