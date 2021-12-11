@@ -19,10 +19,6 @@ cmp.setup({
     }
 })
 
--- The nvim-cmp almost supports LSP's capabilities so you should advertise it to LSP servers
-local cmp_capabilities = vim.lsp.protocol.make_client_capabilities()
-cmp_capabilities = require("cmp_nvim_lsp").update_capabilities(cmp_capabilities)
-
 -- Load in the needed settigns for nvim-lsp-installer plugin.
 -- This ensures automatic installation for the individual language servers.
 local lsp_installer = require("nvim-lsp-installer")
@@ -63,25 +59,7 @@ local requested_servers = {
 -- Once the servers are ready, run setup() on them. This setup is basically
 -- running the lspconfig.server.setup() which means lspconfig is needed to do
 -- this.
-local lsp_installer_servers = require('nvim-lsp-installer.servers')
+local lsp_setup = require("lsp.setup")
 for _, requested_server in pairs(requested_servers) do
-    local server_available, server = lsp_installer_servers.get_server(requested_server)
-    if server_available then
-        -- Setup the server once it will become ready
-        server:on_ready(function()
-            -- Advertise completion capabilities by nvim-cmp
-            local opts = { capabilities = cmp_capabilities }
-            server:setup(opts)
-        end)
-        -- If the server isn't yet installed, schedule the installation
-        if not server:is_installed() then
-            server:install()
-        end
-    else
-        vim.notify(
-            "Can't install: Language server " .. server .. " was not found - SKIPPED",
-            vim.log.levels.WARN,
-            { title = "Notification" }
-        )
-    end
+    lsp_setup.setup(requested_server)
 end
