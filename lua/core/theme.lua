@@ -39,5 +39,15 @@ cmd[[colorscheme default]]
 -- Don't use true colors in TTY
 o.termguicolors = os.getenv("DISPLAY") and true or false
 
+-- Highlight special todo comments
+cmd[[
+augroup vimrc_todo
+    autocmd!
+    autocmd Syntax * syn match MyTodo /\v<(FIXME|NOTE|TODO|OPTIMIZE|XXX):/
+          \ containedin=.*Comment,vimCommentTitle
+augroup END
+hi def link MyTodo Todo
+]]
+
 -- Use proper syntax highlighting in fenced codeblocks
 g.markdown_fenced_languages = {"html", "javascript", "typescript", "css", "scss", "lua", "vim", "python"}
