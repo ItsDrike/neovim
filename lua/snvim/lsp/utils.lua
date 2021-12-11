@@ -1,5 +1,5 @@
 local vim = require("vim")
-local tbl = require("utility.table")
+local tbl = require("snvim.utility.table")
 
 local M = {}
 

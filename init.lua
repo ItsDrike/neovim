@@ -4,10 +4,10 @@
 
 -- This loads in the basic nvim configuration that doesn't rely on any
 -- plugins. it provides default keymaps, options, theming, autocmds, ...
-require "core"
+require "snvim.core"
 
 -- This loads packer plugin manager which manages our plugins
 -- NOTE: Removing this will NOT disable the plugins, but it will disable
 -- automatic packer installation, allowing for the plugins to be deleted
 -- manually (from ~/.local/share/nvim/site/pack/packer).
-require "plugins"
+require "snvim.plugins"

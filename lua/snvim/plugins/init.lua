@@ -1,5 +1,5 @@
 local vim = require("vim")
-local packer_m = require("plugins.packer")
+local packer_m = require("snvim.plugins.packer")
 
 -- Require packer_compiled to lazy-load all of the plugins and their settings
 -- automatically. If this fails, it means we probably didn't yet compile
@@ -8,7 +8,7 @@ local packer_m = require("plugins.packer")
 -- because packer may not yet be installed, bootstrapping happens only after
 -- this to allow this lazy loadning behavior. If we required packer before
 -- this, the lazy-loading would have no effect.
-local packer_compiled_ok, _ = pcall(require, "compiled.packer_compiled")
+local packer_compiled_ok, _ = pcall(require, "snvim.compiled.packer_compiled")
 if not packer_compiled_ok then
     vim.notify(
         "Run :PackerCompile or :PackerSync",
@@ -32,5 +32,5 @@ if not present then
 end
 
 -- Obtain the plugins defined in plugin_list.ua
-local plugin_list = require("plugins.plugin_list")
+local plugin_list = require("snvim.plugins.plugin_list")
 packer_m.startup(packer, plugin_list, first_install)

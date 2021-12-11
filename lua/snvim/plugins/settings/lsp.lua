@@ -7,7 +7,7 @@ local fn = vim.fn
 -- individual language servers. However it is possible to configure nvim
 -- without these plugins and so this config is separated from the plugin
 -- config. for more info, check the comments in lsp/init.lua
-require("lsp")
+require("snvim.lsp")
 
 
 -- Configure nvim-cmp to respect LSP completions.
@@ -59,7 +59,7 @@ local requested_servers = {
 -- Once the servers are ready, run setup() on them. This setup is basically
 -- running the lspconfig.server.setup() which means lspconfig is needed to do
 -- this.
-local lsp_setup = require("lsp.setup")
+local lsp_setup = require("snvim.lsp.setup")
 for _, requested_server in pairs(requested_servers) do
     lsp_setup.setup(requested_server)
 end

@@ -1,6 +1,6 @@
 local vim = require("vim")
 local fn = vim.fn
-local m = require("utility.mappings")
+local m = require("snvim.utility.mappings")
 
 local function cabbrev(input, result, reabbrev)
     m.abbrev("c", input, result, reabbrev)

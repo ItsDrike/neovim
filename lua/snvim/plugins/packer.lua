@@ -6,7 +6,7 @@ local M = {}
 
 -- Define some paths used in the functions
 M.packer_install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-M.packer_compile_path = fn.stdpath("config") .. "/lua/compiled/packer_compiled.lua"
+M.packer_compile_path = fn.stdpath("config") .. "/lua/snvim/compiled/packer_compiled.lua"
 
 -- Define basic default settings for packer
 M.packer_settings = {

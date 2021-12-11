@@ -1,4 +1,4 @@
-local m = require("utility.mappings")
+local m = require("snvim.utility.mappings")
 
 -- See `:help vim.lsp.*` for documentation on any of the below mapped functions
 
@@ -56,4 +56,4 @@ if telescope_installed then
 end
 
 -- Use custom implementation for renaming all references
-m.keymap('n', 'gn', '<cmd>lua require("lsp.rename").rename()<cr>')
+m.keymap('n', 'gn', '<cmd>lua require("snvim.lsp.rename").rename()<cr>')

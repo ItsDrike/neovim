@@ -1,7 +1,7 @@
 local vim = require("vim")
 local fn = vim.fn
 
-local plugin_directory = fn.stdpath("config") .. "/lua/plugins/settings"
+local plugin_directory = fn.stdpath("config") .. "/lua/snvim/plugins/settings"
 
 -- Return the line (string) to be executed with lua that loads in given plugin file.
 -- This is useful for the `config` or `setup` parameters of packer's use to source

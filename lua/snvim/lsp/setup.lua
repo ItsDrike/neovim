@@ -1,5 +1,5 @@
 local vim = require("vim")
-local lsp_utils = require("lsp.utils")
+local lsp_utils = require("snvim.lsp.utils")
 
 local M = {}
 

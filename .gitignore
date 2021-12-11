@@ -2,7 +2,7 @@
 spell/
 
 # Compiled/generated lua files
-lua/compiled/
+lua/snvim/compiled/
 
 # Backup files
 *.bak

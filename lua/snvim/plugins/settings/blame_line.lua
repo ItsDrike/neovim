@@ -1,5 +1,5 @@
 local vim = require("vim")
-local m = require("utility.mappings")
+local m = require("snvim.utility.mappings")
 
 m.keymap("n", "<A-b>", ":ToggleBlameLine<CR>")
 

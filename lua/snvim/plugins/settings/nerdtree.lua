@@ -1,4 +1,4 @@
-local m = require("utility.mappings")
+local m = require("snvim.utility.mappings")
 local vim = require("vim")
 local g = vim.g
 local fn = vim.fn

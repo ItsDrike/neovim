@@ -27,5 +27,5 @@
 -- in the lsp plugin config file, if you don't wish to run with plugins, you'll
 -- want to require this file from init.lua directly.
 
-require("lsp.keymaps")
-require("lsp.autoformat")
+require("snvim.lsp.keymaps")
+require("snvim.lsp.autoformat")
