@@ -1,6 +1,24 @@
-# My personal neovim configuration
+# Stellar-Nvim
 
-This repository includes my custom configuration of neovim.
+Stellar-Nvim is an extensible configuration layer for Neovim. It takes advantage of modern Neovim 5.0+ features such as
+the Language Server Protocol and Treesitter.
+
+Stellar-Nvim evolved from my personal neovim configuration and I made it because I wanted to have something extensible
+that others could use as well, if they wish to. I also love to experiment with my configuration and I figured that
+making something like this would allow me to have a really deep understanding of what's happening on the lower level.
+
+You are free to use this extensible configuration and customize it to your liking, or just learn from it and implement
+your own config from scratch! I don't expect this project to grow too big since again, this is mostly just something I
+threw together to learn about these newer features in neovim, but if you do like the project and you know of a way to
+improve it, it is fully open to pull requests or if you don't know how to make something yourself, you can make a
+feature request by opening a github issue.
+
+## This project is still heavily Work In Progress
+
+I started working on this project only very recently and it is far from what I want it to be. While I do try to keep
+the master branch mostly stable and kind of usable, I can't promise you anything since this project isn't supposed to
+be ready just yet. If you do find some bug, please report it with an issue, or if you feel like it, you can always try
+to fix it yourself and submit a pull request, that's the best way to learn something new!
 
 ## Sample image
 
@@ -8,25 +26,28 @@ This repository includes my custom configuration of neovim.
 
 ## Usage
 
-WIP: I've only recently migrated this repo from my dotfiles and I haven't yet gotten to documenting how to use my
-neovim configuration in detail. I will add this soon-ish, thanks for understanding!
+I do plan on making this project very extensible and allowing easy configuration without having to edit the source
+files directly, but rather by merely using a standalone config file, however this isn't yet fully implemented and so
+currently, configuration like this isn't very easy.
 
+I will add some documentation about how to use this project to the fullest, but for now, since this project isn't yet
+ready for public use anyway, you will either have to wait, or figure things out on your own. Thanks for understanding.
 
 ## Separation from my dotfiles
 
 Previously, this was a part of my [dotfiles](https://github.com/ItsDrike/dotfiles), however I decided to separate it
 into it's own repository, because it slowly grew to become the most updated part of my dotfiles and an isolated
 repository simply made more sense, because there were some people who came to my dotfiles just to see my neovim
-configuration. I also wanted to provide a full and nicer readme in which I could document how to work with my
-configuration and what exactly it supports. This was too inconvenient to do in my dotfiles alone, because it's readme
-is also documenting everything else about my system configuration and it would be way too big to include neovim config
-there. However, to keep things consistent there is still a git submodule in the dotfiles repository linking back to
-this repo.
+configuration. I wanted to turn my configuration into something that's very easily usable with a readme that explains
+how to do certain things using this configuration. But doing all this from within my dotfiles alone was very
+inconvenient and that repository was really just meant to hold all of my system config, so I didn't want to clutter too
+much of it's readme just explaining how the neovim configuration works. However to keep things consistent, there is
+still a git submodule in my dotfiles repository linking back to this one.
 
 Note: I've manually copied the git history affecting `home/.config/nvim` from my dotfiles repository to this one so
 that there is still a stable record of what was done to my neovim configuration and when. This however doesn't include
-my old vim configuration because it was in `home/.vimrc` instead, so if you are interested in that, you can still check
-the original commit history in my dotfiles repository.
+my old vim configuration because it was in `home/.config/vim` or in `home/.vimrc` instead, so if you are interested in
+that, you can still check the original commit history in my dotfiles repository.
 
 ## Attribution
 
