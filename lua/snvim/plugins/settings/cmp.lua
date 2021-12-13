@@ -13,6 +13,9 @@ cmp.setup({
         { name = "path" },
         { name = "buffer" },
     },
+    experimental = {
+        ghost_text = true,
+    },
     formatting = {
         fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
