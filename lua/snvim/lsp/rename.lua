@@ -15,7 +15,7 @@ local unique_name = "lsp-rename-win"
 -- File require string. Neede because we will be defining keymaps
 -- applied only to the rename window buffer which will refer to
 -- functions within this file, for that, they need to call require
-local file_require_string = "lsp.rename"
+local file_require_string = "snvim.lsp.rename"
 
 -- Check whether LSP is actually active.
 local function check_lsp_active()
