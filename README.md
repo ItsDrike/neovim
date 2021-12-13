@@ -64,3 +64,4 @@ list of all projects which helped the existence of this repository:
 - [lspsaga nvim plugin](https://github.com/glepnir/lspsaga.nvim)
 - [CosmicVim](https://github.com/CosmicNvim/CosmicNvim)
 - [LunarVim](https://github.com/LunarVim/LunarVim)
+- [Lewis6991's dotfiles](https://github.com/lewis6991/dotfiles)
