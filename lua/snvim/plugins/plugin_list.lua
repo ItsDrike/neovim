@@ -81,17 +81,22 @@ local plugin_list = {
         run = function() vim.fn['firenvim#install'](0) end,
     },
     {
-        "williamboman/nvim-lsp-installer",  -- LSP auto-installer
-        config = get_plugin_file("lsp.lua"),
+        "hrsh7th/nvim-cmp",                 -- Support for autocompetion
+        config = get_plugin_file("cmp.lua"),
         requires = {
-            -- Predefined LSP server configurations
-            "neovim/nvim-lspconfig",
-            -- Support for autocompletion
-            "hrsh7th/nvim-cmp",
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-cmdline",
+            { "hrsh7th/nvim-cmp", after="nvim-cmp" },
+            { "hrsh7th/cmp-buffer", after="nvim-cmp" },
+            { "hrsh7th/cmp-path", after="nvim-cmp" },
+            { "hrsh7th/cmp-cmdline", after="nvim-cmp" },
+            { "hrsh7th/cmp-nvim-lsp", after="nvim-cmp" },
+        },
+    },
+    {
+        "neovim/nvim-lspconfig",            -- default lang server configurations
+        config = get_plugin_file("lsp.lua"),
+        after = "nvim-cmp",     -- To advertise cmp capabilities to lang servers
+        requires = {
+            { "williamboman/nvim-lsp-installer" },  -- LSP auto-installer
         },
     },
 

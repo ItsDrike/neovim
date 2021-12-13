@@ -9,16 +9,6 @@ local fn = vim.fn
 -- config. for more info, check the comments in lsp/init.lua
 require("snvim.lsp")
 
-
--- Configure nvim-cmp to respect LSP completions.
-local cmp = require("cmp")
-
-cmp.setup({
-    sources = {
-        { name = "nvim_lsp" }
-    }
-})
-
 -- Load in the needed settigns for nvim-lsp-installer plugin.
 -- This ensures automatic installation for the individual language servers.
 local lsp_installer = require("nvim-lsp-installer")
