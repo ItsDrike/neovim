@@ -1,5 +1,12 @@
 local cmp = require("cmp")
 
+local source_names = {
+  buffer   = "Buf",
+  nvim_lsp = "LSP",
+  path     = 'Path',
+  cmdline  = 'CMD',
+}
+
 cmp.setup({
     sources = {
         { name = "nvim_lsp" },
@@ -9,6 +16,12 @@ cmp.setup({
     formatting = {
         fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
+            -- Show source of the completion
+            local nm = source_names[entry.source.name]
+            if nm then
+                vim_item.menu = string.format("[%s]", nm)
+            end
+
             -- Limit completion hint width
             local maxwidth = 50
             if #vim_item.abbr > maxwidth then
