@@ -16,15 +16,10 @@ end
 -- Define packer plugins
 -- The individual tables will get passed into the packer's use function
 local plugin_list = {
-    { "airblade/vim-gitgutter" },           -- Git status in files
     { "dhruvasagar/vim-table-mode" },       -- Easy way to construct markdown tables
     { "wakatime/vim-wakatime" },            -- Track time spent coding
     { "mhinz/vim-startify" },               -- Nice startup screen for vim when started withotu file/dir
     { "dbeniamine/cheat.sh-vim" },          -- Quick interaction with cheat.sh cheatsheets
-    {
-        "tveskag/nvim-blame-line",          -- Show commit affecting cursor line
-        config = get_plugin_file("blame_line.lua")
-    },
     {
         "vimwiki/vimwiki",                  -- Wiki pages for vim
         config = get_plugin_file("vimwiki.lua"),
@@ -36,6 +31,11 @@ local plugin_list = {
     {
         "tomasiser/vim-code-dark",          -- Vim theme inspired by vscode's Dark+
         config = get_plugin_file("vim-code-dark.lua")
+    },
+    {
+        "lewis6991/gitsigns.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+        config = get_plugin_file("gitsigns.lua"),
     },
     {
         "nvim-treesitter/nvim-treesitter",  -- AST language analysis providing semantic highlighting
