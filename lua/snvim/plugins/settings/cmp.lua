@@ -19,6 +19,10 @@ cmp.setup({
     formatting = {
         fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
+            -- Show LSP type/kind (function/class/...) with lspkind plugin
+            local lspkind = require("lspkind")
+            vim_item.kind = lspkind.presets.default[vim_item.kind]
+
             -- Show source of the completion
             local nm = source_names[entry.source.name]
             if nm then
