@@ -26,11 +26,11 @@ local plugin_list = {
     },
     {
         "tpope/vim-commentary",             -- Adds ability to comment out sections of files
-        config = get_plugin_file("commentary.lua")
+        config = get_plugin_file("commentary.lua"),
     },
     {
         "tomasiser/vim-code-dark",          -- Vim theme inspired by vscode's Dark+
-        config = get_plugin_file("vim-code-dark.lua")
+        config = get_plugin_file("vim-code-dark.lua"),
     },
     {
         "lewis6991/gitsigns.nvim",
@@ -41,7 +41,7 @@ local plugin_list = {
         "nvim-treesitter/nvim-treesitter",  -- AST language analysis providing semantic highlighting
         config = get_plugin_file("treesitter.lua"),
         run = ':TSUpdate',
-        requires = { "nvim-treesitter/playground", opt = true }
+        requires = { "nvim-treesitter/playground", opt = true },
     },
     {
         "vim-airline/vim-airline",          -- Status line
@@ -73,12 +73,12 @@ local plugin_list = {
         requires = {
             { "junegunn/fzf" },
             { "stsewd/fzf-checkout.vim" },
-        }
+        },
     },
     {
         'glacambre/firenvim',               -- Integrates neovim into the browser
         config = get_plugin_file("firenvim.lua"),
-        run = function() vim.fn['firenvim#install'](0) end
+        run = function() vim.fn['firenvim#install'](0) end,
     },
     {
         "williamboman/nvim-lsp-installer",  -- LSP auto-installer
@@ -106,7 +106,7 @@ local plugin_list = {
     --    requires = {
     --        { "nvim-lua/popup.nvim" },
     --        { "nvim-lua/plenary.nvim" },
-    --    }
+    --    },
     --},
 
     -- Coc is disabled because we're using LSP. It implements support from language servers from
