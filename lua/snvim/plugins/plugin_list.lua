@@ -109,8 +109,7 @@ local plugin_list = {
     -- {
     --     "neoclide/coc.nvim",
     --     branch = "release",
-    --     config = get_plugin_file("coc.vim"),
-    --     requires = { "antoinemadec/coc-fzf", opt = true },
+    --     config = get_plugin_file("deprecated/coc.vim"),
     -- },
 }
 
