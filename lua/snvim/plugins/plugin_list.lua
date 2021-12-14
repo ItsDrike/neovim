@@ -67,15 +67,6 @@ local plugin_list = {
         requires = { "mfussenegger/nvim-dap-python" },
     },
     {
-        "junegunn/fzf.vim",                 -- Fuzzy finder (TODO: consider replacing with telescope)
-        run = function() fn['fzf#install']() end,
-        config = get_plugin_file("fzf.lua"),
-        requires = {
-            { "junegunn/fzf" },
-            { "stsewd/fzf-checkout.vim" },
-        },
-    },
-    {
         'glacambre/firenvim',               -- Integrates neovim into the browser
         config = get_plugin_file("firenvim.lua"),
         run = function() vim.fn['firenvim#install'](0) end,
@@ -101,19 +92,15 @@ local plugin_list = {
         },
     },
 
-    -- TODO: Consider testing out telescope as an alternative to FZF, I've heard a lot of
-    -- positive feedback about it, but I haven't yet got the chance to meaningfully test
-    -- it and configure it.
-    --{
-    --    "nvim-telescope/telescope.nvim",
-    --    --config = get_plugin_file("telescope.lua")
-    --    module = "telescope",
-    --    cmd = "Telescope",
-    --    requires = {
-    --        { "nvim-lua/popup.nvim" },
-    --        { "nvim-lua/plenary.nvim" },
-    --    },
-    --},
+    {
+        "nvim-telescope/telescope.nvim",
+        config = get_plugin_file("telescope.lua"),
+        requires = {
+            { "nvim-lua/popup.nvim" },
+            { "nvim-lua/plenary.nvim" },
+            { "BurntSushi/ripgrep" },
+        },
+    },
 
     -- Coc is disabled because we're using LSP. It implements support from language servers from
     -- scratch, which is slower than neovim's built-in LSP and since this configuration won't work
