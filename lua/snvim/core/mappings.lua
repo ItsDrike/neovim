@@ -87,7 +87,7 @@ m.keymap("n", "N", "Nzzzv")
 m.keymap("v", "<C-c>", '"+y')
 
 -- Alias replace all
-m.keymap("n", "<A-s>", ":%s//gI<Left><Left><Left>", {silent=false})
+m.keymap("n", "<A-s>", ":%s//gc<Left><Left><Left>", {silent=false})
 
 -- Stop search highlight with Esc
 m.keymap("n", "<esc>", ":noh<CR>")
