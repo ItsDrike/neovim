@@ -42,7 +42,7 @@ local requested_servers = {
     "cssls", "dockerls", "gopls", "html",
     "hls", "jsonls", "jdtls", "tsserver",
     "sumneko_lua", "pyright", "pylsp",
-    "sqlls", "vimls", "yamlls"
+    "sqlls", "vimls", "yamlls", "rust_analyzer"
 }
 
 -- Go through the requested servers and ensure installation
