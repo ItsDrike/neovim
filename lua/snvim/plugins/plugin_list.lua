@@ -75,7 +75,6 @@ local plugin_list = {
         "hrsh7th/nvim-cmp",                 -- Support for autocompetion
         config = get_plugin_file("cmp.lua"),
         requires = {
-            { "hrsh7th/nvim-cmp", after="nvim-cmp" },
             { "hrsh7th/cmp-buffer", after="nvim-cmp" },
             { "hrsh7th/cmp-path", after="nvim-cmp" },
             { "hrsh7th/cmp-cmdline", after="nvim-cmp" },
