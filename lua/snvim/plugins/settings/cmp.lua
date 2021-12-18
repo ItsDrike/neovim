@@ -1,4 +1,5 @@
 local cmp = require("cmp")
+local luasnip = require("luasnip")
 
 
 local cmp_settings = {
@@ -45,6 +46,7 @@ cmp.setup({
         { name = "nvim_lsp" },
         { name = "path" },
         { name = "buffer" },
+        { name = "luasnip" },
     },
     experimental = {
         ghost_text = true,
@@ -77,7 +79,13 @@ cmp.setup({
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true },
-  },
+    },
+    snippet = {
+        expand = function(args)
+            -- Support snippets with LusSnip snippet engine plugin
+            luasnip.lsp_expand(args.body)
+        end
+    },
 })
 
 cmp.setup.cmdline('/', { sources = { name = 'buffer' } })
