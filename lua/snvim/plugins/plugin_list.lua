@@ -80,7 +80,6 @@ local plugin_list = {
             { "hrsh7th/cmp-path", after="nvim-cmp" },
             { "hrsh7th/cmp-cmdline", after="nvim-cmp" },
             { "hrsh7th/cmp-nvim-lsp", after="nvim-cmp" },
-            { "onsails/lspkind-nvim" },
         },
     },
     {

@@ -1,11 +1,44 @@
 local cmp = require("cmp")
 
-local source_names = {
-  buffer   = "Buf",
-  nvim_lsp = "LSP",
-  path     = 'Path',
-  cmdline  = 'CMD',
+
+local cmp_settings = {
+    kind_icons = {
+        Class = " ",
+        Color = " ",
+        Constant = "ﲀ ",
+        Constructor = " ",
+        Enum = "練",
+        EnumMember = " ",
+        Event = " ",
+        Field = " ",
+        File = "",
+        Folder = " ",
+        Function = " ",
+        Interface = "ﰮ ",
+        Keyword = " ",
+        Method = " ",
+        Module = " ",
+        Operator = "",
+        Property = " ",
+        Reference = " ",
+        Snippet = " ",
+        Struct = " ",
+        Text = " ",
+        TypeParameter = " ",
+        Unit = "塞",
+        Value = " ",
+        Variable = " ",
+    },
+    source_names = {
+        buffer    = "Buf",
+        nvim_lsp  = "LSP",
+        path      = "Path",
+        cmdline   = "CMD",
+        luasnip   = "Snippet",
+    },
+    max_completion_width = 30,
 }
+
 
 cmp.setup({
     sources = {
@@ -19,20 +52,16 @@ cmp.setup({
     formatting = {
         fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
-            -- Show LSP type/kind (function/class/...) with lspkind plugin
-            local lspkind = require("lspkind")
-            vim_item.kind = lspkind.presets.default[vim_item.kind]
-
-            -- Show source of the completion
-            local nm = source_names[entry.source.name]
+            -- Show kind icon (function/class/...)
+            vim_item.kind = cmp_settings.kind_icons[vim_item.kind]
+            -- Show source of the completion (lsp/buffer/path/snippet/...)
+            local nm = cmp_settings.source_names[entry.source.name]
             if nm then
                 vim_item.menu = string.format("[%s]", nm)
             end
-
             -- Limit completion hint width
-            local maxwidth = 50
-            if #vim_item.abbr > maxwidth then
-                vim_item.abbr = vim_item.abbr:sub(1, maxwidth) .. "..."
+            if #vim_item.abbr > cmp_settings.max_completion_width then
+                vim_item.abbr = vim_item.abbr:sub(1, cmp_settings.max_completion_width) .. "..."
             end
             return vim_item
         end,
