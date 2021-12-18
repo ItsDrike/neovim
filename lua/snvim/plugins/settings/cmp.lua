@@ -37,6 +37,13 @@ local cmp_settings = {
         cmdline   = "CMD",
         luasnip   = "Snippet",
     },
+    duplicates = {
+        buffer = 1,
+        path = 1,
+        nvim_lsp = 0,
+        luasnip = 1,
+    },
+    duplicates_default = 0,
     max_completion_width = 30,
 }
 
@@ -61,6 +68,8 @@ cmp.setup({
             if nm then
                 vim_item.menu = string.format("[%s]", nm)
             end
+            -- Enable duplicates? (competion recommendations with same name)
+            vim_item.dup = cmp_settings.duplicates[entry.source.name] or cmp_settings.duplicates_default
             -- Limit completion hint width
             if #vim_item.abbr > cmp_settings.max_completion_width then
                 vim_item.abbr = vim_item.abbr:sub(1, cmp_settings.max_completion_width) .. "..."
