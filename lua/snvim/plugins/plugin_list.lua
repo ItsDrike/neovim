@@ -8,7 +8,7 @@ local plugin_directory = fn.stdpath("config") .. "/lua/snvim/plugins/settings"
 -- both `.vim` and `.lua` files.
 -- Expects a `plugin_file` which is a relative path from the `plugin_directory` folder.
 local function get_plugin_file(plugin_file)
-    local source_line = string.format('source %s/%s', plugin_directory, plugin_file)
+    local source_line = string.format("source %s/%s", plugin_directory, plugin_file)
     return string.format("vim.fn.execute('%s')", source_line)
 end
 
@@ -47,7 +47,7 @@ local plugin_list = {
     {
         "nvim-treesitter/nvim-treesitter",  -- AST language analysis providing semantic highlighting
         config = get_plugin_file("treesitter.lua"),
-        run = ':TSUpdate',
+        run = ":TSUpdate",
         requires = { "nvim-treesitter/playground", opt = true },
     },
     {
@@ -74,9 +74,9 @@ local plugin_list = {
         requires = { "mfussenegger/nvim-dap-python" },
     },
     {
-        'glacambre/firenvim',               -- Integrates neovim into the browser
+        "glacambre/firenvim",               -- Integrates neovim into the browser
         config = get_plugin_file("firenvim.lua"),
-        run = function() vim.fn['firenvim#install'](0) end,
+        run = function() vim.fn["firenvim#install"](0) end,
     },
     {
         "hrsh7th/nvim-cmp",                 -- Support for autocompetion
