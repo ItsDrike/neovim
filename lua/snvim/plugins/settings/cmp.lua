@@ -238,7 +238,7 @@ cmp.setup({
     },
     snippet = {
         expand = function(args)
-            -- Support snippets with LusSnip snippet engine plugin
+            -- Support snippets with LuaSnip snippet engine plugin
             luasnip.lsp_expand(args.body)
         end
     },
