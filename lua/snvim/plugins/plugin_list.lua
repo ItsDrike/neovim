@@ -83,11 +83,11 @@ local plugin_list = {
         config = get_plugin_file("cmp.lua"),
         after="L3MON4D3/LuaSnip",
         requires = {
-            { "hrsh7th/cmp-buffer", after="nvim-cmp" },
-            { "hrsh7th/cmp-path", after="nvim-cmp" },
-            { "hrsh7th/cmp-cmdline", after="nvim-cmp" },
-            { "hrsh7th/cmp-nvim-lsp", after="nvim-cmp" },
-            { "saadparwaiz1/cmp_luasnip", after={ "nvim-cmp", "LuaSnip" } },
+            { "hrsh7th/cmp-buffer" },
+            { "hrsh7th/cmp-path" },
+            { "hrsh7th/cmp-cmdline" },
+            { "hrsh7th/cmp-nvim-lsp" },
+            { "saadparwaiz1/cmp_luasnip", after="LuaSnip" },
         },
     },
     {
