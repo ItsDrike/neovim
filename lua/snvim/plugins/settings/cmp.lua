@@ -36,7 +36,7 @@ local cmp_settings = {
         nvim_lsp  = "LSP",
         path      = "Path",
         cmdline   = "CMD",
-        luasnip   = "Snippet",
+        luasnip   = "Snip",
     },
     duplicates = {
         buffer = 1,
