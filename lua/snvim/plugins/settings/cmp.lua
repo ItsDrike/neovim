@@ -192,8 +192,8 @@ cmp.setup({
     sources = {
         { name = "nvim_lsp" },
         { name = "path" },
-        { name = "buffer" },
         { name = "luasnip" },
+        { name = "buffer" },
     },
     experimental = {
         ghost_text = true,
