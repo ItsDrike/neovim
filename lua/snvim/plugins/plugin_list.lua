@@ -81,12 +81,13 @@ local plugin_list = {
     {
         "hrsh7th/nvim-cmp",                 -- Support for autocompetion
         config = get_plugin_file("cmp.lua"),
-        after="L3MON4D3/LuaSnip",
         requires = {
             { "hrsh7th/cmp-buffer" },
             { "hrsh7th/cmp-path" },
             { "hrsh7th/cmp-cmdline" },
             { "hrsh7th/cmp-nvim-lsp" },
+            { "L3MON4D3/LuaSnip" },
+            { "rafamadriz/friendly-snippets" },
             { "saadparwaiz1/cmp_luasnip", after="LuaSnip" },
         },
     },
