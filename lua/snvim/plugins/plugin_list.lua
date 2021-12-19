@@ -33,6 +33,13 @@ local plugin_list = {
         config = get_plugin_file("vim-code-dark.lua"),
     },
     {
+        "L3MON4D3/LuaSnip",                 -- Support for snippets
+        config = function()
+            require("luasnip.loaders.from_vscode").lazy_load()
+        end,
+        requires = { "rafamadriz/friendly-snippets" }
+    },
+    {
         "lewis6991/gitsigns.nvim",
         requires = { "nvim-lua/plenary.nvim" },
         config = get_plugin_file("gitsigns.lua"),
@@ -74,8 +81,8 @@ local plugin_list = {
     {
         "hrsh7th/nvim-cmp",                 -- Support for autocompetion
         config = get_plugin_file("cmp.lua"),
+        after="L3MON4D3/LuaSnip",
         requires = {
-            { "L3MON4D3/LuaSnip" },         -- Snippet engine
             { "hrsh7th/cmp-buffer", after="nvim-cmp" },
             { "hrsh7th/cmp-path", after="nvim-cmp" },
             { "hrsh7th/cmp-cmdline", after="nvim-cmp" },
