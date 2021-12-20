@@ -32,7 +32,7 @@ function M.resolve_config(server_name, config_override)
     }
 
     -- Check for a configuration file in lsp/providers directory
-    local has_custom_provider, custom_config = pcall(require, "lua/lsp/providers/" .. server_name)
+    local has_custom_provider, custom_config = pcall(require, "snvim.lsp.providers." .. server_name)
     if has_custom_provider then
         config = vim.tbl_deep_extend("force", config, custom_config)
     end
