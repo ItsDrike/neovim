@@ -111,16 +111,6 @@ local plugin_list = {
             { "BurntSushi/ripgrep" },
         },
     },
-
-    -- Coc is disabled because we're using LSP. It implements support from language servers from
-    -- scratch, which is slower than neovim's built-in LSP and since this configuration won't work
-    -- with pure vim, we can rely on nvim-only thigns. I left it here because LSP can sometimes
-    -- cause issues and Coc is a lot more friendly to setup.
-    -- {
-    --     "neoclide/coc.nvim",
-    --     branch = "release",
-    --     config = get_plugin_file("deprecated/coc.vim"),
-    -- },
 }
 
 return plugin_list
