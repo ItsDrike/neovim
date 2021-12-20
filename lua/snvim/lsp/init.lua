@@ -14,18 +14,14 @@
 -- the install instructions for each language server and install it user or
 -- system wide.
 --
--- However, since this configuration shouldn't be plugin dependant, as it is
--- outside of the plugins/ directory and LSP is supported by neovim directly,
--- this folder is here to provide the non-plugin dependant LSP configuration,
--- but I do not manually define the configuration for each language server,
--- since I do actually utilize those plugins, but sturcturing like this still
--- does give space for completely custom configurations written from scratch
--- without relying on any external plugins at all. If you do want to do that,
--- this would be the place to set this up.
---
--- NOTE: With my current configuration, this file is only ran by being required
--- in the lsp plugin config file, if you don't wish to run with plugins, you'll
--- want to require this file from init.lua directly.
+-- This means that some functions/files in this configurations are plugin
+-- dependant, which means that this file should only be ran after LSP related
+-- plugins finished loading. However most of the code in here is actually
+-- plugin independant making it somewhat easy to switch those plugins if
+-- needed, or even remove them in favor of manual implementations in case it
+-- ever comse up. If a file/function is plugin-dependant, it will be mentioned
+-- on the top of that file/function
 
+require("snvim.lsp.lsp_installer")
 require("snvim.lsp.keymaps")
 require("snvim.lsp.autoformat")

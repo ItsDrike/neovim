@@ -1,6 +1,11 @@
-local m = require("snvim.utility.mappings")
-
+-- This file sets up key bindings for LSP interactions. By default,
+-- it will always set up keybinds with pure nvim's LSP, however if
+-- telescope plugin is found, the it will be used for certain keymaps
+-- instead, similarely, if lsp_signature plugin is found, some additional
+-- keybinds may be added/overrided.
+--
 -- See `:help vim.lsp.*` for documentation on any of the below mapped functions
+local m = require("snvim.utility.mappings")
 
 -- Check if certain plugins are installed, if so, they should be used
 -- to define some mappings

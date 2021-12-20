@@ -1,5 +1,5 @@
 -- Nvim's LSP lacks rename-all functionality which plugins like Coc provide
--- this is a manual implementation of this feature
+-- this is a manual implementation of this feature using pure nvim's LSP
 local vim = require("vim")
 local api = vim.api
 local cmd = vim.cmd

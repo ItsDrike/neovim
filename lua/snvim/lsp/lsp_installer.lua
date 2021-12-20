@@ -1,17 +1,8 @@
-local vim = require("vim")
-local fn = vim.fn
-
--- Load in our default plugin independant LSP settings.
--- These are loaded from here, because we don't need them if we aren't using
--- these plugins, which actually load in the LSP configurations and install the
--- individual language servers. However it is possible to configure nvim
--- without these plugins and so this config is separated from the plugin
--- config. for more info, check the comments in lsp/init.lua
-require("snvim.lsp")
-
 -- Load in the needed settigns for nvim-lsp-installer plugin.
 -- This ensures automatic installation for the individual language servers.
 local lsp_installer = require("nvim-lsp-installer")
+local lsp_setup = require("snvim.lsp.setup")
+local vim = require("vim")
 
 -- Define some settings for the UI and installation path for the language
 -- servers.
@@ -29,7 +20,7 @@ lsp_installer.settings({
             uninstall_server = "X",
         },
     },
-    install_root_dir = fn.stdpath("data") ..  "/lsp_servers",
+    install_root_dir = vim.fn.stdpath("data") ..  "/lsp_servers",
 })
 
 -- Define a table of requested language servers which should be automatically
@@ -45,11 +36,6 @@ local requested_servers = {
     "sqlls", "vimls", "yamlls", "rust_analyzer"
 }
 
--- Go through the requested servers and ensure installation
--- Once the servers are ready, run setup() on them. This setup is basically
--- running the lspconfig.server.setup() which means lspconfig is needed to do
--- this.
-local lsp_setup = require("snvim.lsp.setup")
 for _, requested_server in pairs(requested_servers) do
     lsp_setup.setup(requested_server)
 end

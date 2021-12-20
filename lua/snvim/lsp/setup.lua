@@ -1,3 +1,5 @@
+-- Most of the functions in this file require lspconfig plugin to work
+-- since it provides default configurations for the language servers.
 local vim = require("vim")
 local lsp_utils = require("snvim.lsp.utils")
 

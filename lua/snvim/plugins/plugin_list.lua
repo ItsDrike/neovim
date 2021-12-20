@@ -93,7 +93,9 @@ local plugin_list = {
     },
     {
         "neovim/nvim-lspconfig",            -- default lang server configurations
-        config = get_plugin_file("lsp.lua"),
+        config = function()
+            require("snvim.lsp")
+        end,
         after = "nvim-cmp",     -- To advertise cmp capabilities to lang servers
         requires = {
             { "williamboman/nvim-lsp-installer" },  -- LSP auto-installer
