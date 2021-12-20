@@ -12,7 +12,7 @@ local function buf_try_add(server_name, bufnr)
 end
 
 -- Get default language server capabilities
--- if we have cmp-nvim-lsp plugin, it's capabilities will be included
+-- if we have cmp-nvim-lsp plugin, it's capabilities will be included as well
 function M.common_capabilities()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
 
@@ -25,7 +25,7 @@ function M.common_capabilities()
 end
 
 -- Get configuration for given language server (by name).
--- If we have lsp/providers/server_name file, we will use the config
+-- If we have lsp/providers/server_name.lua file, we will use the config
 -- table returned by it and extend the default configuration with it.
 -- we can also extend this config with the config_override variable
 function M.resolve_config(server_name, config_override)
