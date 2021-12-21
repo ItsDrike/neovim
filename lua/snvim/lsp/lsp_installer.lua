@@ -32,7 +32,7 @@ local requested_servers = {
     "clangd", "cmake", "omnisharp",
     "cssls", "dockerls", "gopls", "html",
     "hls", "jsonls", "jdtls", "tsserver",
-    "sumneko_lua", "pyright", "pylsp",
+    "sumneko_lua", "pyright", "pylsp", "bashls",
     "sqlls", "vimls", "yamlls", "rust_analyzer"
 }
 
