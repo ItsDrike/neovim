@@ -46,7 +46,7 @@ function M.get_python_venv(workspace)
         -- In case we didn't start nvim at the project's root, find the
         -- closest virtual env directory following parent dirts
         local parent = lsp_utils.find_parent_with_name(dirname, workspace)
-        if parent ~= "" then
+        if parent then
             return path.join(parent, dirname)
         end
     end
@@ -85,7 +85,7 @@ function M.get_python_root_dir(fname)
         "setup.cfg",
         "requirements.txt",
     }
-    local project_path = lsp_utils.find_parent_with_name(table.unpack(root_files)(fname))
+    local project_path = lsp_utils.find_parent_with_name(unpack(root_files), fname)
     if project_path then
         return project_path
     end
