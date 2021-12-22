@@ -1,7 +1,8 @@
 -- This file contains some support functions used in the configuration files of
 -- the individual providers
 local vim = require("vim")
-local path = require("lspconfig.util").path
+local util = require("lspconfig.util")
+local path = util.path
 local lsp_utils = require("snvim.lsp.utils")
 
 local M = {}
@@ -60,6 +61,44 @@ function M.get_python_bin(workspace)
     else
         -- Fallback to system python
         return vim.fn.exepath("python3") or vim.fn.exepath("python") or "python"
+    end
+end
+
+-- Get path to the root directory of a python project.
+-- If we find a venv, get root project path based on it, alternatively
+-- if we find one of certain common files in some of the
+-- parent directories, use that parent directory. If that
+-- also fails, try to obtain the root directory using git.
+-- If all of the above still failed, just return the directory
+-- of given file.
+-- #param fname string path to a file within a python project
+function M.get_python_root_dir(fname)
+    local venv_path = M.get_python_venv(fname)
+    if venv_path then
+        return path.dirname(venv_path)
+    end
+
+    local root_files = {
+        "pyproject.toml",
+        "Pipfile",
+        "setup.py",
+        "setup.cfg",
+        "requirements.txt",
+    }
+    local project_path = lsp_utils.find_parent_with_name(table.unpack(root_files)(fname))
+    if project_path then
+        return project_path
+    end
+
+    local git_path = util.find_git_ancestor(fname)
+    if git_path then
+        return git_path
+    end
+
+    if path.is_file(fname) then
+        return path.dirname(fname)
+    else
+        return fname
     end
 end
 
