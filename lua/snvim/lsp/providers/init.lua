@@ -21,18 +21,20 @@ function M.get_python_venv(workspace)
         return vim.env.VIRTUAL_ENV
     end
 
-    -- Try to find venv path with poetry if poetry.lock is present
-    local poetry_match = vim.fn.glob(path.join(workspace, "poetry.lock"))
-    if poetry_match ~= "" then
+    -- Try to find venv path with poetry if poetry.lock is present somewhere in
+    -- the parents directory tree
+    local poetry_match = lsp_utils.find_parent_with_name("poetry.lock", workspace)
+    if poetry_match then
         local venv = vim.fn.trim(vim.fn.system("poetry env info --path"))
         if venv ~= "" then
             return venv
         end
     end
 
-    -- Try to find venv path with pipenv if Pipfile is present
-    local pipenv_match = vim.fn.glob(path.join(workspace, "Pipfile"))
-    if pipenv_match ~= "" then
+    -- Try to find venv path with pipenv if Pipfile is present somewhere in the
+    -- parents directory three
+    local pipenv_match = lsp_utils.find_parent_with_name("Pipfile", workspace)
+    if pipenv_match then
         local venv = vim.fn.trim(vim.fn.system("PIPENV_PIPFILE=" .. pipenv_match .. " pipenv --venv"))
         if venv ~= "" then
             return venv
