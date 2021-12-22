@@ -36,4 +36,18 @@ function M.get_supported_filetypes(server_name)
     return requested_server:get_supported_filetypes()
 end
 
+-- Find a parent directory which contains a given name pattern
+-- this name pattern can belong both to a file or to a directory
+-- This requirres lspconfig which contains the root_pattern fucntion.
+-- @param file string the file name we're looking for
+-- @param directory string the directory path to start from, default: %:p:h
+function M.find_parent_with_name(file, directory)
+    if directory == nil then
+        directory = vim.fn.expand("%:p:h")
+    end
+
+    local util = require("lspconfig.util")
+    return util.root_pattern(file)(directory)
+end
+
 return M

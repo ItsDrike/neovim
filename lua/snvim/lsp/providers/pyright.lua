@@ -1,5 +1,6 @@
 local vim = require("vim")
 local path = require("lspconfig.util").path
+local lsp_utils = require("snvim.lsp.utils")
 
 local function get_python_path(workspace)
     local pybin = function(venv_path)
@@ -32,9 +33,11 @@ local function get_python_path(workspace)
 
     -- Check common directories used to store virtual environments
     for _, dirname in ipairs({'.venv', '.env', 'venv', 'env', 'ENV'}) do
-        local venv = vim.fn.glob(path.join(workspace, dirname))
-        if venv ~= "" then
-            return pybin(venv)
+        -- In case we didn't start nvim at the project's root, find the
+        -- closest virtual env directory following parent dirts
+        local parent = lsp_utils.find_parent_with_name(dirname, workspace)
+        if parent ~= "" then
+            return pybin(path.join(parent, dirname))
         end
     end
 
