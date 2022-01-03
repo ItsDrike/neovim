@@ -69,11 +69,6 @@ local plugin_list = {
         requires = { "mfussenegger/nvim-dap-python" },
     },
     {
-        "glacambre/firenvim",               -- Integrates neovim into the browser
-        config = get_plugin_file("firenvim.lua"),
-        run = function() vim.fn["firenvim#install"](0) end,
-    },
-    {
         "hrsh7th/nvim-cmp",                 -- Support for autocompetion
         config = get_plugin_file("cmp.lua"),
         requires = {
