@@ -58,15 +58,10 @@ local plugin_list = {
             { "ryanoasis/vim-devicons" },
         },
     },
-    -- TODO: Consider changing this to nvim-tree
     {
-        "preservim/nerdtree",               -- File tree
-        config = get_plugin_file("nerdtree.lua"),
-        requires = {
-            { "Xuyuanp/nerdtree-git-plugin" },
-            { "tiagofumo/vim-nerdtree-syntax-highlight" },
-            { "ryanoasis/vim-devicons" },
-        },
+        "kyazdani42/nvim-tree.lua",
+        config = get_plugin_file("nvimtree.lua"),
+        requires = { "kyazdani42/nvim-web-devicons" },
     },
     {
         "mfussenegger/nvim-dap",            -- Support for the debugging within vim
