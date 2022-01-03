@@ -27,7 +27,9 @@ lsp_installer.settings({
 -- installed.
 --
 -- NOTE: pylsp requires external installaion with
--- :PylspInstall pyls-flake8 pyls-mypy pyls-isort
+-- `:PylspInstall pyls-flake8 pyls-mypy pyls-isort`
+-- after that, you will also want to make sure that the installed tools are
+-- actually present on your system
 local requested_servers = {
     "clangd", "cmake", "omnisharp",
     "cssls", "dockerls", "gopls", "html",
