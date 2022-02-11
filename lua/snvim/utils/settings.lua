@@ -2,6 +2,7 @@ local M = {}
 
 -- Define paths to config dirs which will be prepended to actual setting names
 local config_path = "snvim.settings"
+local plugin_config_path = "snvim.plugin_conf"
 
 
 -- Get settings for given name
@@ -29,6 +30,19 @@ function M.get_settings(name)
         error(string.format("'config' attribute of '%s' settings must be set!", name))
     end
     return conf.config
+end
+
+
+-- Returns a function that executes a plugin configuration file
+-- this is useful for the `config` and `setup` of packer's use function.
+--@param name string @Configuration name (a file under plugin_config_path)
+function M.plugin_file(name)
+    return function()
+        local ok, conf = pcall(require, plugin_config_path .. "." .. name)
+        if not ok then
+            error(string.format("Unable to get '%s' settings: %s", name, conf))
+        end
+    end
 end
 
 
