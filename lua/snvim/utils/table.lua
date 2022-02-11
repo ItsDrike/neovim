@@ -82,7 +82,7 @@ function M.print_table(tbl, max_depth)
 
     -- Convert arbitrary object that's not a table to a string
     local function to_str(x)
-        if M.has_value({"number", "boolean", "function", "nil", "userdata", "thread"}, type(x)) then
+        if M.contains({"number", "boolean", "function", "nil", "userdata", "thread"}, type(x)) then
             return tostring(x)
         elseif type(x) == "string" then
             return wrap_str(x)
