@@ -10,7 +10,7 @@ local config_path = "snvim.settings"
 function M.get_settings(name)
     local ok, conf = pcall(require, config_path .. "." .. name)
     if not ok then
-        error(string.format("Unable to get %s settings: %s", name, conf))
+        error(string.format("Unable to get '%s' settings: %s", name, conf))
     end
 
     -- If the configuration file has some init, run it, otherwise continue
