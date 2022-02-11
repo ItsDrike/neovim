@@ -6,8 +6,8 @@ M.config = {
     git = {
         clone_timeout = 300,
         subcommands = {
-        -- this is more efficient than what Packer is using by default
-        fetch = "fetch --no-tags --no-recurse-submodules --update-shallow --progress",
+            -- this is more efficient than what Packer is using by default
+            fetch = "fetch --no-tags --no-recurse-submodules --update-shallow --progress",
         }
     },
     log = {
