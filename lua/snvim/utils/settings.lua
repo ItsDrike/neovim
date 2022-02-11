@@ -1,11 +1,14 @@
 local M = {}
 
+-- Define paths to config dirs which will be prepended to actual setting names
+local config_path = "snvim.settings"
+
 
 -- Get settings for given name
---@param name string @Configuration require name (will be prefixed by snvim.settings.)
+--@param name string @Configuration name (a file under config_path)
 --@returns table
 function M.get_settings(name)
-    local ok, conf = pcall(require, "snvim.settings." .. name)
+    local ok, conf = pcall(require, config_path .. "." .. name)
     if not ok then
         error(string.format("Unable to get %s settings: %s", name, conf))
     end
