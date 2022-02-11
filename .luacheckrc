@@ -2,7 +2,7 @@
 
 stds.nvim = {
     globals = {
-        "lvim",
+        "Snvim",
     },
     read_globals = {
         "vim"
