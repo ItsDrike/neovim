@@ -86,5 +86,7 @@ function M:start()
     -- TODO: Load LSP
 end
 
+-- This defines Snvim as a global, so after this is executed,
+-- it will be accessible from everywhere.
 Snvim = M:init()
 Snvim:start()
