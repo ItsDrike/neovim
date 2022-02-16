@@ -44,7 +44,7 @@ end
 -- Load all specified plugins
 --@param plugin_list table
 function M.load_plugins(plugin_list)
-    local packer = require("packer")
+    local packer = require "packer"
     packer.startup(function(use)
         -- Use all specified plugins
         for _, plugin in ipairs(plugin_list) do
