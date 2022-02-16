@@ -33,16 +33,11 @@ function M.get_settings(name)
 end
 
 
--- Returns a function that executes a plugin configuration file
--- this is useful for the `config` and `setup` of packer's use function.
---@param name string @Configuration name (a file under plugin_config_path)
+-- Returns a require string that runs a plugin configuration file.
+-- This is useful for the `config` and `setup` of packer's use function.
+-- @param name string @Configuration name (a file under plugin_config_path)
 function M.plugin_file(name)
-    return function()
-        local ok, conf = pcall(require, plugin_config_path .. "." .. name)
-        if not ok then
-            error(string.format("Unable to get '%s' settings: %s", name, conf))
-        end
-    end
+    return "require '" .. plugin_config_path .. "." .. name .. "'"
 end
 
 
