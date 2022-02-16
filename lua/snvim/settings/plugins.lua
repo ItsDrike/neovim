@@ -1,8 +1,10 @@
+local settings = require "snvim.utils.settings"
+
 local M = {}
 
 M.config = {
-     -- Let packer manager itself, so that it gets updates
-    { "wbthomason/packer.nvim" },
+    { "wbthomason/packer.nvim" },           -- Let packer manage itself, so it gets updates
+    { "Tastyep/structlog.nvim" },           -- Structured logging for nvim
 }
 
 return M
