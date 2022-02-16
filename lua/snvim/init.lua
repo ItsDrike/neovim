@@ -37,7 +37,7 @@ end
 function M:init()
     -- Some basic attributes
     self.in_headless = #vim.api.nvim_list_uis() == 0
-    self.log_level = self.in_headless and "debug" or "warn"
+    self.log_level = self.in_headless and "DEBUG" or "WARN"
 
     -- Set some path attributes
     self.runtime_dir = get_dir("SNVIM_RUNTIME_DIR", "data")
