@@ -48,6 +48,7 @@ function M:init()
     -- Plugin specific paths
     self.packer_install_dir = path.join_paths(self.pack_dir, "packer", "start", "packer.nvim")
     self.packer_compile_path = path.join_paths(self.config_dir, "plugin", "packer_compiled.lua")
+    self.structlog_path = path.join_paths(self.cache_dir, "snvim.log")
 
     -- Make sure that nvim respects our runtime path configurations
     if os.getenv "SNVIM_RUNTIME_DIR" then
