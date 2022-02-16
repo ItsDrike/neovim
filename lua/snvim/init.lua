@@ -74,7 +74,7 @@ function M:start()
     ensure_version()
 
     -- Load plugins first
-    local packer_tools = require "snvim.packer"
+    local packer_tools = require "snvim.core.packer"
     if not path.is_directory(self.packer_install_dir) then
         -- Only bootstrap if it's not already installed
         packer_tools.bootstrap_packer(self.packer_install_dir)
