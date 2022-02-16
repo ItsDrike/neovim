@@ -44,6 +44,8 @@ function M:init()
     self.config_dir = get_dir("SNVIM_CONFIG_DIR", "config")
     self.cache_dir = get_dir("SNVIM_CACHE_DIR", "cache")
     self.pack_dir = path.join_paths(self.runtime_dir, "site", "pack")
+
+    -- Plugin specific paths
     self.packer_install_dir = path.join_paths(self.pack_dir, "packer", "start", "packer.nvim")
     self.packer_compile_path = path.join_paths(self.config_dir, "plugin", "packer_compiled.lua")
 
