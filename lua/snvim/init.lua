@@ -83,6 +83,7 @@ function M:start()
     packer_tools.load_plugins(settings.get_settings("plugins"))
 
     -- TODO: Load the default configuration
+    require "snvim.core.autocommands"
 
     -- TODO: Load Theme? (Could be part of above)
 
