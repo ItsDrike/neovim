@@ -1,4 +1,4 @@
 local utils = require "snvim.utils.core"
-local settings = require "snvim.settings.autocommands"
+local settings = require "snvim.utils.settings"
 
-utils.define_augroups(settings.config)
+utils.define_augroups(settings.get_settings("autocommands"))
