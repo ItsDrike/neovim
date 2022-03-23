@@ -7,12 +7,12 @@ local M = {}
 -- @param buffer bool @Indicate if the autogroup should be local to the buffer
 function M.define_augroups(definitions, buffer)
     for group_name, definition in pairs(definitions) do
-        vim.cmd("autogroup" .. group_name)
+        vim.cmd("augroup " .. group_name)
 
         if buffer then
             vim.cmd [[autocmd! * <buffer>]]
         else
-            vim.cmd [[autocmd]]
+            vim.cmd [[autocmd!]]
         end
 
         for _, def in pairs(definition) do
@@ -20,7 +20,7 @@ function M.define_augroups(definitions, buffer)
             vim.cmd(command)
         end
 
-        vim.cmd "autogroup END"
+        vim.cmd "augroup END"
     end
 end
 
