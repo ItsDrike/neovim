@@ -1,27 +1,27 @@
 local M = {}
 
 
--- Create autocommand groups based on the passed definitions
--- @param definitions table @Contains trigger, pattern and text.
--- The key will be used as a group name
--- @param buffer bool @Indicate if the autogroup should be local to the buffer
-function M.define_augroups(definitions, buffer)
-    for group_name, definition in pairs(definitions) do
-        vim.cmd("augroup " .. group_name)
+-- Create autocommand group
+-- @param group_name string @Name of the augroup
+-- @param autocmds table @Table of autocmd definitions, these definitions
+-- are themselves tables of individual parameters. For example:
+-- {{"FileType", "c", "setlocal shiftwidth=2"}, {"FileType", ...}}
+-- @param buffer bool @Indivate if the augroup should be local to the buffer (no)
+function M.define_augroup(group_name, autocmds, buffer)
+    vim.cmd("augroup " .. group_name)
 
-        if buffer then
-            vim.cmd [[autocmd! * <buffer>]]
-        else
-            vim.cmd [[autocmd!]]
-        end
-
-        for _, def in pairs(definition) do
-            local command = table.concat(vim.tbl_flatten { "autocmd", def }, " ")
-            vim.cmd(command)
-        end
-
-        vim.cmd "augroup END"
+    if buffer then
+        vim.cmd [[autocmd! * <buffer>]]
+    else
+        vim.cmd [[autocmd!]]
     end
+
+    for _, autocmd_def in pairs(autocmds) do
+        local command = table.concat(vim.tbl_flatten { "autocmd", autocmd_def }, " ")
+        vim.cmd(command)
+    end
+
+    vim.cmd "augroup END"
 end
 
 
