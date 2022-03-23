@@ -84,6 +84,7 @@ function M:start()
 
     -- TODO: Load the default configuration
     require "snvim.core.autocommands"
+    require "snvim.core.theme"
 
     -- TODO: Load Theme? (Could be part of above)
 
