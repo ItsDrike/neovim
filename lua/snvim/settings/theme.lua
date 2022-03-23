@@ -15,6 +15,17 @@ M.config = {
     cursor_line_ctermbg = "None",
     cursor_line_number_guifg = "#1f85de",
     cursor_line_number_ctermfg = "LightBlue",
+
+    -- Show these languages in fenced markdown code blocks
+    -- we can also map custom codeblock names to filetype names
+    markdown_fenced_languages = {
+        "sh", "bash", "zsh", "c", "asm", "rust", "haskell",
+        "javascript", "js=javascript", "typescript", "ts=typescript",
+        "python", "python3=python", "python2=python", "py=python",
+        "cs", "csharp=cs", "cpp", "c++=cpp", "vim", "viml=vim",
+        "dosini", "ini=dosini", "php", "html", "css", "java", "awk",
+        "lua"
+    }
 }
 
 return M

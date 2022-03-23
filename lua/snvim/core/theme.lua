@@ -10,6 +10,7 @@ vim.opt.showmatch = config.show_matching_brackets
 vim.opt.scrolloff = config.horizontal_scrolloff
 vim.opt.sidescrolloff = config.vertical_scrolloff
 vim.opt.wrap = config.enable_line_wrapping
+vim.g.markdown_fenced_languages = config.markdown_fenced_languages
 
 -- Make sure to utilize the full 256 colors of most modern terminals,
 -- if we have $DISPLAY env variable set (we're in a graphical session, not pure TTY)
