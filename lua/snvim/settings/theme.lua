@@ -6,7 +6,7 @@ M.config = {
     show_line_numbers=true,
     show_relative_numbers=true,
     show_matching_brackets=true,
-    enable_line_wrapping=true,
+    enable_line_wrapping=false,
     vertical_scrolloff=5,
     horizontal_scrolloff=5,
 
