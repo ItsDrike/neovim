@@ -82,7 +82,7 @@ function M:start()
     packer_tools.init()
     packer_tools.load_plugins(settings.get_settings("plugins"))
 
-    -- TODO: Load the default configuration
+    require "snvim.core.options"
     require "snvim.core.autocommands"
     require "snvim.core.theme"
 
