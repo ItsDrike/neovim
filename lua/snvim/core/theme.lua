@@ -16,6 +16,7 @@ vim.g.markdown_fenced_languages = config.markdown_fenced_languages
 -- if we have $DISPLAY env variable set (we're in a graphical session, not pure TTY)
 vim.opt.termguicolors = os.getenv("DISPLAY") and true or false
 
+-- Set highlight colors for cursor line background and current line number foreground
 utils.define_augroup(
     "_cursor_color",
     {
