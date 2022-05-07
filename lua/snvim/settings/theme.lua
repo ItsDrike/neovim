@@ -2,6 +2,7 @@ local M = {}
 
 M.config = {
     colorscheme = "codedark",
+    show_mode=true,
     listchars = {tab = " ", trail = "·"},
     show_cursor_line=true,
     show_line_numbers=true,

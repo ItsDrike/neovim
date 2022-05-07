@@ -10,6 +10,7 @@ vim.opt.showmatch = config.show_matching_brackets
 vim.opt.scrolloff = config.horizontal_scrolloff
 vim.opt.sidescrolloff = config.vertical_scrolloff
 vim.opt.wrap = config.enable_line_wrapping
+vim.opt.showmode = config.show_mode
 vim.opt.list = true
 vim.opt.listchars = config.listchars
 vim.g.markdown_fenced_languages = config.markdown_fenced_languages
