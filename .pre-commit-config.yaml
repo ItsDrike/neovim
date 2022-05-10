@@ -7,3 +7,9 @@ repos:
         entry: luacheck
         types: [lua]
         args: [.]
+      - id: stylua
+        name: StyLua
+        language: rust
+        entry: stylua
+        types: [lua]
+        args: ["-"]
