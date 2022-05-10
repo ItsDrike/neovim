@@ -69,7 +69,7 @@ function M:init()
                 vim_log_level = vim_log_level + 1
             end
 
-        logger:log(vim_log_level, msg)
+            logger:log(vim_log_level, msg)
         end
     end
     return logger
