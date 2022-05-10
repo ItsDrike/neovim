@@ -3,6 +3,7 @@
 stds.nvim = {
     globals = {
         "Snvim",
+        vim = { fields = { "g", "opt" } },
     },
     read_globals = {
         "vim"
