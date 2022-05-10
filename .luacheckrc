@@ -18,3 +18,5 @@ self = false
 ignore = {
     "212/_.*" -- Unused arugment, for vars with "_" prefix
 }
+
+exclude_files = { "**/packer_compiled.lua" }
