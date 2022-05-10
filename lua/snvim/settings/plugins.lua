@@ -1,5 +1,3 @@
-local settings = require "snvim.utils.settings"
-
 local M = {}
 
 M.config = {
