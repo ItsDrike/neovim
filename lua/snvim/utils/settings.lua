@@ -4,7 +4,6 @@ local M = {}
 local config_path = "snvim.settings"
 local plugin_config_path = "snvim.plugin_conf"
 
-
 -- Get settings for given name
 --@param name string @Configuration name (a file under config_path)
 --@returns table
@@ -32,13 +31,11 @@ function M.get_settings(name)
     return conf.config
 end
 
-
 -- Returns a require string that runs a plugin configuration file.
 -- This is useful for the `config` and `setup` of packer's use function.
 -- @param name string @Configuration name (a file under plugin_config_path)
 function M.plugin_file(name)
     return "require '" .. plugin_config_path .. "." .. name .. "'"
 end
-
 
 return M

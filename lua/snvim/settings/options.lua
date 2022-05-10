@@ -1,4 +1,4 @@
-local path = require "snvim.utils.path"
+local path = require("snvim.utils.path")
 
 local M = {}
 
@@ -45,7 +45,7 @@ M.config = {
             "c",    -- Don't show redundant messages from ins-completion-menu
             "I",    -- Don't show the default intro message
         },
-        whichwrap = "<,>,[,],h,l"
+        whichwrap = "<,>,[,],h,l",
     },
     headless_options = {
         shortmess = "",     -- Try to prevent echom from cutting messages off or prompting

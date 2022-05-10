@@ -1,1 +1,1 @@
-require "snvim"
+require("snvim")

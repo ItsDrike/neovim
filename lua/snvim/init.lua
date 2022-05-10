@@ -1,9 +1,8 @@
-local settings = require "snvim.utils.settings"
-local path = require "snvim.utils.path"
+local settings = require("snvim.utils.settings")
+local path = require("snvim.utils.path")
 
 --@class Snvim
 local M = {}
-
 
 -- Try to obtain a path from given environmental variable, if that
 -- fails, fallback to given stdpath resolution.
@@ -18,19 +17,17 @@ local function get_dir(env_var, stdpath)
     return env_path
 end
 
-
 -- Perform a check that ensures neovim installation is at a certain version
 -- which this project requires. Otherwise quit nvim with code 1
 local function ensure_version()
-    if vim.fn.has "nvim-0.6.1" ~= 1 then
+    if vim.fn.has("nvim-0.6.1") ~= 1 then
         vim.notify("Please upgrade your Neovim base installation. This config requires v0.6.1+", vim.log.levels.WARN)
         vim.wait(5000, function()
             return false
         end)
-        vim.cmd "cquit"
+        vim.cmd("cquit")
     end
 end
-
 
 -- Initialize basic attributes, the `&runtimepath` variable and prepare for startup
 --@returns table
@@ -51,30 +48,29 @@ function M:init()
     self.structlog_path = path.join_paths(self.cache_dir, "snvim.log")
 
     -- Make sure that nvim respects our runtime path configurations
-    if os.getenv "SNVIM_RUNTIME_DIR" then
-        vim.opt.rtp:remove(path.join_paths(vim.fn.stdpath "data", "site"))
-        vim.opt.rtp:remove(path.join_paths(vim.fn.stdpath "data", "site", "after"))
+    if os.getenv("SNVIM_RUNTIME_DIR") then
+        vim.opt.rtp:remove(path.join_paths(vim.fn.stdpath("data"), "site"))
+        vim.opt.rtp:remove(path.join_paths(vim.fn.stdpath("data"), "site", "after"))
         vim.opt.rtp:prepend(path.join_paths(self.runtime_dir, "site"))
         vim.opt.rtp:append(path.join_paths(self.runtime_dir, "site", "after"))
     end
-    if os.getenv "SNVIM_CONFIG_DIR" then
-        vim.opt.rtp:remove(vim.fn.stdpath "config")
-        vim.opt.rtp:remove(path.join_paths(vim.fn.stdpath "config", "after"))
+    if os.getenv("SNVIM_CONFIG_DIR") then
+        vim.opt.rtp:remove(vim.fn.stdpath("config"))
+        vim.opt.rtp:remove(path.join_paths(vim.fn.stdpath("config"), "after"))
         vim.opt.rtp:prepend(self.config_dir)
         vim.opt.rtp:remove(path.join_paths(self.config_dir, "after"))
     end
     -- TODO: We need something like vim.opt.packpath = vim.opt.rtp
-    vim.cmd [[let &packpath = &runtimepath]]
+    vim.cmd([[let &packpath = &runtimepath]])
 
     return self
 end
-
 
 function M:start()
     ensure_version()
 
     -- Load plugins first
-    local packer_tools = require "snvim.core.packer"
+    local packer_tools = require("snvim.core.packer")
     -- Bootstrap packer if it's not already installed
     if not path.is_directory(self.packer_install_dir) then
         packer_tools.bootstrap_packer(self.packer_install_dir)
@@ -82,9 +78,9 @@ function M:start()
     packer_tools.init()
     packer_tools.load_plugins(settings.get_settings("plugins"))
 
-    require "snvim.core.options"
-    require "snvim.core.autocommands"
-    require "snvim.core.theme"
+    require("snvim.core.options")
+    require("snvim.core.autocommands")
+    require("snvim.core.theme")
 
     -- TODO: Load Theme? (Could be part of above)
 

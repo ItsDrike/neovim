@@ -1,8 +1,7 @@
-local path = require "snvim.utils.path"
-local settings = require "snvim.utils.settings"
+local path = require("snvim.utils.path")
+local settings = require("snvim.utils.settings")
 
 local M = {}
-
 
 -- Download and load packer plugin manager (will reinstall if packer is already present)
 --@param install_path string @Path to packer plugin directory
@@ -15,9 +14,12 @@ function M.bootstrap_packer(install_path)
     end
 
     vim.fn.system({
-        "git", "clone", "--depth", "1",
+        "git",
+        "clone",
+        "--depth",
+        "1",
         "https://github.com/wbthomason/packer.nvim",
-        install_path
+        install_path,
     })
     -- Add packer plugin via nvim's internal plugin system
     vim.cmd("packadd packer.nvim")
@@ -36,7 +38,7 @@ end
 -- Initialize packer
 --@param snvim Snvim
 function M.init()
-    local packer = require "packer"
+    local packer = require("packer")
     local packer_settings = settings.get_settings("packer")
     packer.init(packer_settings)
 end
@@ -44,7 +46,7 @@ end
 -- Load all specified plugins
 --@param plugin_list table
 function M.load_plugins(plugin_list)
-    local packer = require "packer"
+    local packer = require("packer")
     packer.startup(function(use)
         -- Use all specified plugins
         for _, plugin in ipairs(plugin_list) do

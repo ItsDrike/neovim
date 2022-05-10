@@ -8,17 +8,17 @@ M.config = {
         subcommands = {
             -- this is more efficient than what Packer is using by default
             fetch = "fetch --no-tags --no-recurse-submodules --update-shallow --progress",
-        }
+        },
     },
     log = {
-        level = Snvim.log_level
+        level = Snvim.log_level,
     },
     max_jobs = 50,
     display = {
         open_fn = function()
-            return require("packer.util").float { border = "rounded" }
+            return require("packer.util").float({ border = "rounded" })
         end,
-    }
+    },
 }
 
 return M

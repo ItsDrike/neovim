@@ -1,5 +1,5 @@
-local utils = require "snvim.utils.core"
-local settings = require "snvim.utils.settings"
+local utils = require("snvim.utils.core")
+local settings = require("snvim.utils.settings")
 
 local definitions = settings.get_settings("autocommands")
 for group_name, definition in pairs(definitions) do

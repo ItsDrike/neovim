@@ -31,30 +31,32 @@ function M:init()
                 processors = {
                     structlog.processors.Namer(),
                     structlog.processors.StackWriter({ "line", "file" }, { max_parents = 0, stack_level = 2 }),
-                    structlog.processors.Timestamper "%H:%M:%S",
+                    structlog.processors.Timestamper("%H:%M:%S"),
                 },
                 formatter = structlog.formatters.FormatColorizer(
                     "%s [%-5s] %s: %-30s",
                     { "timestamp", "level", "logger_name", "msg" },
-                    { level = structlog.formatters.FormatColorizer.color_level() }
+                    {
+                        level = structlog.formatters.FormatColorizer.color_level(),
+                    }
                 ),
             }),
             structlog.sinks.File(M.levels.TRACE, M.logfile, {
                 processors = {
                     structlog.processors.Namer(),
                     structlog.processors.StackWriter({ "line", "file" }, { max_parents = 3, stack_level = 2 }),
-                    structlog.processors.Timestamper "%H:%M:%S",
+                    structlog.processors.Timestamper("%H:%M:%S"),
                 },
                 formatter = structlog.formatters.Format(
                     "%s [%-5s] %s: %-30s",
                     { "timestamp", "level", "logger_name", "msg" }
                 ),
             }),
-        }
+        },
     }
 
     structlog.configure({ snvim = snvim_log })
-    local logger = structlog.get_logger "snvim"
+    local logger = structlog.get_logger("snvim")
 
     -- Overwrite vim notify to use the snvim's logger
     if M.override_notify then
@@ -75,7 +77,6 @@ function M:init()
     return logger
 end
 
-
 -- Adds a log entry using the same logger each time (singleton pattern)
 -- @param log_level string | "TRACE" | "DEBUG" | "INFO" | "WARN" | "ERROR"
 -- @param msg string
@@ -89,7 +90,6 @@ function M:add_entry(log_level, msg, event)
     self.__single_logger = self:init()
     self.__single_logger:log(log_level, msg, event)
 end
-
 
 -- Add a log entry at TRACE level
 -- @param msg string
@@ -125,6 +125,5 @@ end
 function M:error(msg, event)
     self:add_entry(self.levels.ERROR, msg, event)
 end
-
 
 return M

@@ -1,6 +1,5 @@
 local M = {}
 
-
 --- Find the first entry for which the predicate returns true.
 -- @generic K, V
 -- @param tbl table<K, V>
@@ -15,7 +14,6 @@ function M.find_first(tbl, predicate)
     return nil
 end
 
-
 -- Check if given table contains a given value
 -- @generic K, V
 -- @param tbl table<K, V>
@@ -28,7 +26,6 @@ function M.contains(tbl, value)
     return ret ~= nil
 end
 
-
 -- Get the length of a given table
 -- @param tbl table
 -- @return int @amount of elements in a table
@@ -39,7 +36,6 @@ function M.len(tbl)
     end
     return count
 end
-
 
 --Print an arbitrary table in readable form
 -- @param tbl table
@@ -59,7 +55,7 @@ function M.print_table(tbl, max_depth)
         local single_quotes = 0
         local double_quotes = 0
         for i = 1, #str do
-            local c = str:sub(i,i)
+            local c = str:sub(i, i)
             if c == "'" then
                 single_quotes = single_quotes + 1
             elseif c == '"' then
@@ -82,7 +78,7 @@ function M.print_table(tbl, max_depth)
 
     -- Convert arbitrary object that's not a table to a string
     local function to_str(x)
-        if M.contains({"number", "boolean", "function", "nil", "userdata", "thread"}, type(x)) then
+        if M.contains({ "number", "boolean", "function", "nil", "userdata", "thread" }, type(x)) then
             return tostring(x)
         elseif type(x) == "string" then
             return wrap_str(x)
@@ -112,7 +108,7 @@ function M.print_table(tbl, max_depth)
         end
 
         for k, v in pairs(node) do
-            local key = '[' .. to_str(k) .. ']'
+            local key = "[" .. to_str(k) .. "]"
 
             if type(v) ~= "table" then
                 table.insert(output, tab(depth) .. key .. " = " .. to_str(v))

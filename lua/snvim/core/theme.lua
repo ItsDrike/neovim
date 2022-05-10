@@ -1,5 +1,5 @@
-local utils = require "snvim.utils.core"
-local settings = require "snvim.utils.settings"
+local utils = require("snvim.utils.core")
+local settings = require("snvim.utils.settings")
 
 local config = settings.get_settings("theme")
 
@@ -20,23 +20,21 @@ vim.g.markdown_fenced_languages = config.markdown_fenced_languages
 vim.opt.termguicolors = os.getenv("DISPLAY") and true or false
 
 -- Set highlight colors for cursor line background and current line number foreground
-utils.define_augroup(
-    "_cursor_color",
+utils.define_augroup("_cursor_color", {
     {
-        {
-            "ColorScheme",
-            "*",
-            "highlight CursorLine guibg=" .. config.cursor_line_guibg ..
-                " ctermbg=" .. config.cursor_line_ctermbg
-        },
-        {
-            "ColorScheme",
-            "*",
-            "highlight CursorLineNr guifg=" .. config.cursor_line_number_guifg ..
-                " ctermfg=" .. config.cursor_line_number_ctermfg
-        }
-    }
-)
+        "ColorScheme",
+        "*",
+        "highlight CursorLine guibg=" .. config.cursor_line_guibg .. " ctermbg=" .. config.cursor_line_ctermbg,
+    },
+    {
+        "ColorScheme",
+        "*",
+        "highlight CursorLineNr guifg="
+            .. config.cursor_line_number_guifg
+            .. " ctermfg="
+            .. config.cursor_line_number_ctermfg,
+    },
+})
 
 -- Set the colorscheme last, since it also triggers the ColorScheme autocmds,
 -- which are defined above

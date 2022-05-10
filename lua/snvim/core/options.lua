@@ -1,4 +1,4 @@
-local settings = require "snvim.utils.settings"
+local settings = require("snvim.utils.settings")
 local config = settings.get_settings("options")
 
 -- Only load headless options if we're in headless mode
