@@ -58,7 +58,7 @@ function M:init()
 
     -- Overwrite vim notify to use the snvim's logger
     if M.override_notify then
-        vim.notify = function(msg, vim_log_level, opts)
+        vim.notify = function(msg, vim_log_level, _opts)
             -- vim log level can be omitted
             if vim_log_level == nil then
                 vim_log_level = M.levels["INFO"]
