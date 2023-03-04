@@ -82,4 +82,12 @@ return {
       { "[[", function() require("illuminate")["goto_prev_reference"](false) end, desc = "Prev Reference" },
     },
   },
+
+  -- Search/Replace in multiple files
+  {
+    "windwp/nvim-spectre",
+    keys = {
+      { "<leader>sr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
+    },
+  },
 }
