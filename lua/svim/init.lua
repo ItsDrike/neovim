@@ -6,10 +6,18 @@ M.lazy_version = ">=9.1.0"
 
 -- Entrypoint (called from init.lua)
 function M.setup()
-  M.ensure_versions()
+  M.ensure_nvim()
+
+  local PluginLoader = require("svim.plugin-loader")
+  PluginLoader.init()
+  PluginLoader.setup("svim.plugins")
+
+  M.ensure_lazy()
+
+  PluginLoader.ensure_plugins()
 end
 
-function M.ensure_versions()
+function M.ensure_nvim()
   if vim.fn.has("nvim-" .. M.neovim_version) ~= 1 then
     vim.notify(
       "Please upgrade your Neovim base installation.\n"
@@ -20,11 +28,9 @@ function M.ensure_versions()
     )
     error("Exiting")
   end
+end
 
-  local Lazy = require("svim.lazy")
-  Lazy.bootstrap_lazy()
-  Lazy.setup_lazy()
-
+function M.ensure_lazy()
   local status_ok, Semver = pcall(require, "lazy.manage.semver")
   if not status_ok then
     vim.notify("Lazy wasn't installed properly!", vim.log.levels.ERROR)
