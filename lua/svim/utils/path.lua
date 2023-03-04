@@ -30,5 +30,6 @@ M.config_dir = vim.call("stdpath", "config") -- ~/.config/nvim
 M.cache_dir = vim.call("stdpath", "cache") -- ~/.cache/nvim
 M.pack_dir = M.join_paths(M.runtime_dir, "site", "pack")
 M.plugins_dir = M.join_paths(M.pack_dir, "lazy", "opt")
+M.undodir = M.join_paths(M.cache_dir, "undo")
 
 return M
