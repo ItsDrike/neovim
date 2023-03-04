@@ -80,5 +80,13 @@ return {
     version = false, -- this plugin doesn't have any releasees
     lazy = true
   },
+
+  -- Lay loaded by mini.ai
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    version = false, -- this plugin doesn't have any releases
+    lazy = true
+  },
 }
 
