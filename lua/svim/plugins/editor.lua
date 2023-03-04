@@ -114,4 +114,38 @@ return {
       { "<leader>st", "<cmd>TodoTelescope<CR>", desc = "Todo" },
     },
   },
+
+  -- Simple git integration for staging/resetting hunks, showing diffs, blames, and seeing line status
+  {
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = function()
+      local icons = require("svim.vars.icons")
+
+      return {
+        signs = {
+          add = { text = icons.ui.BoldLineLeft },
+          change = { text = icons.ui.BoldLineLeft },
+          delete = { text = icons.ui.Triangle },
+          topdelete = { text = icons.ui.Triangle },
+          changedelete = { text = icons.ui.BoldLineLeft },
+        },
+      }
+    end,
+    keys = {
+        { "]h", function() require("gitsigns").next_hunk() end, desc = "Next Git Hunk" },
+        { "[h", function() require("gitsigns").prev_hunk() end, desc = "Prev Git Hunk" },
+        { "<leader>ghs", function() require("gitsigns").stage_hunk() end, desc = "Stage Hunk", mode = { "n", "v" } },
+        { "<leader>ghr", function() require("gitsigns").reset_hunk() end, desc = "Reset Hunk", mode = { "n", "v" } },
+        { "<leader>ghS", function() require("gitsigns").stage_buffer() end, desc = "Stage Buffer" },
+        { "<leader>ghu", function() require("gitsigns").undo_stage_hunk() end, desc = "Undo Stage Hunk" },
+        { "<leader>ghR", function() require("gitsigns").reset_buffer() end, desc = "Reset Buffer" },
+        { "<leader>ghp", function() require("gitsigns").preview_hunk() end, desc = "Preview Hunk" },
+        { "<leader>ghb", function() require("gitsigns").blame_line() end, desc = "Blame Line"},
+        { "<leader>ghB", function() require("gitsigns").blame_line({ full = true }) end, desc = "Blame Line (full)" },
+        { "<leader>ghd", function() require("gitsigns").diffthis() end, desc = "Diff This" },
+        { "<leader>ghD", function() require("gitsigns").diffthis("~") end, "Diff This ~" },
+        { "ih", function() require("gitsigns").select_hunk() end, desc = "GitSigns Select Hunk", mode = { "o", "x" } },
+    },
+  },
 }
