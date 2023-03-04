@@ -3,7 +3,7 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     cmd = "Neotree",
-    depends = { "nui.nvim" }, -- specified in utils spec
+    depends = { "nui.nvim", "nvim-web-devicons" }, -- specified in utils spec
     keys = {
       {
         "<leader>fe",

@@ -21,4 +21,8 @@ return {
   -- ui components
   -- many plugins require this
   { "MunifTanjim/nui.nvim", lazy = true },
+
+  -- icons
+  -- many plugins require this
+  { "nvim-tree/nvim-web-devicons", lazy = true },
 }
