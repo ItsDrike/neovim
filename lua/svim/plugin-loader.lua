@@ -1,4 +1,4 @@
-Path = require("svim.utils.path")
+local Path = require("svim.utils.path")
 
 local M = {}
 
