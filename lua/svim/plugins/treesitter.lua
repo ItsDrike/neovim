@@ -72,5 +72,13 @@ return {
       require("nvim-treesitter.configs").setup(opts)
     end
   },
+
+  -- Lazy loaded by mini.comment
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    version = false, -- this plugin doesn't have any releasees
+    lazy = true
+  },
 }
 
