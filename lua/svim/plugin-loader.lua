@@ -1,4 +1,5 @@
 local Path = require("svim.utils.path")
+local colorscheme = require("svim.vars").colorscheme
 
 local M = {}
 
@@ -7,7 +8,7 @@ M.lazy_opts = {
   checker = { enabled = true }, -- automatically check for plugin updates
   install = {
     missing = true,
-    colorscheme = { "habamax" },
+    colorscheme = { colorscheme, "habamax" },
   },
   defaults = {
     -- Only load plugins when they're needed

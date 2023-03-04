@@ -36,6 +36,17 @@ function M.setup()
     M.load("autocmds")
     M.load("keymaps")
   end
+
+  local colorscheme = require("svim.vars").colorscheme
+  require("lazy.core.util").try(function()
+    vim.cmd.colorscheme(colorscheme)
+  end, {
+    msg = "Could not load your colorscheme",
+    on_error = function(msg)
+      require("lazy.core.util").error(msg)
+      vim.cmd.colorscheme("habamax")
+    end
+  })
 end
 
 ---@param name "autocmds" | "options" | "keymaps"
