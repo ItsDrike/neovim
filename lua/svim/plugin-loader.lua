@@ -64,13 +64,29 @@ end
 
 ---Install all plugins
 function M.ensure_plugins()
-  local status_ok, Lazy = pcall(require, "lazy")
+  local status_ok, lazy = pcall(require, "lazy")
   if not status_ok then
     vim.notify("Unable to load plugins, lazy.nvim is not installed!")
     error("Exiting")
   end
 
-  Lazy.install({ wait = true })
+  local Config = require("lazy.core.config")
+  require("lazy.core.plugin").load(true)
+  require("lazy.core.plugin").update_state()
+
+  local not_installed_plugins = vim.tbl_filter(function(plugin)
+    return not plugin._.installed
+  end, Config.plugins)
+
+  require("lazy.manage").clear()
+
+  if #not_installed_plugins > 0 then
+    lazy.install({ wait = true, show = true })
+  end
+
+  if #Config.to_clean > 0 then
+    lazy.clean({ wait = true, show = true })
+  end
 end
 
 return M
