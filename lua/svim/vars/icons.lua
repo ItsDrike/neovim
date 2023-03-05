@@ -37,7 +37,7 @@ return {
     ChevronShortLeft = "",
     ChevronShortRight = "",
     ChevronShortUp = "",
-    Circle = "",
+    Circle = "●",
     Close = "",
     CloudDownload = "",
     Code = "",
