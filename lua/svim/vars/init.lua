@@ -1,3 +1,4 @@
 return {
-  colorscheme = "onedarker"
+  colorscheme = "onedarker",
+  format_on_save = false,
 }
