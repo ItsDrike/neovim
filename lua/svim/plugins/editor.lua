@@ -242,7 +242,7 @@ return {
         ["<leader>x"] = { name = "+diagnostics/quickfix" },
       }
       if require("svim.utils.plugins").has("noice.nvim") then
-        keymaps["<leader>sn"] = { name = "+noice" }
+        keymaps["<leader>un"] = { name = "+noice" }
       end
       wk.register(keymaps)
     end,
