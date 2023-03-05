@@ -12,7 +12,7 @@ function M.get()
     ---@class PluginLspKeys
     M._keys = {
       { "<leader>cd", vim.diagnostic.open_float, desc = "Line diagnostics" },
-      { "gl", "<leader>cd", desc = "Line diagnostics" },
+      { "gl", "<leader>cd", desc = "Line diagnostics", remap = true },
       { "<leader>cl", "<cmd>LspInfo<CR>", desc = "Lsp Info" },
       { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
       { "K", vim.lsp.buf.hover, desc = "Hover" },
