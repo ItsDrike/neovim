@@ -248,4 +248,124 @@ return {
     end,
   },
 
+  -- Fuzzy finder
+  {
+    "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
+    version = false, -- telescope only did one release, so use HEAD for now
+    keys = {
+      { "<leader>/", require("svim.utils.telescope").telescope("live_grep"), desc = "Find in Files (Grep)" },
+      { "<leader>:", "<cmd>Telescope command_history<CR>", desc = "Command History" },
+
+      -- buffers
+      { "<leader>b,", "<cmd>Telescope buffers show_all_buffers=true<CR>", desc = "Switch Buffer" },
+      { "<leader>,", "<leader>b,", desc = "Switch Buffer", remap = true },
+      { "<leader>fb", "<cmd>Telescope buffers<CR>", desc = "Buffers" },
+
+      -- find
+      { "<leader>ff", require("svim.utils.telescope").telescope("files"), desc = "Find Files (root dir)" },
+      { "<leader><space>", "<leader>ff", desc = "Find Files (root dir)", remap = true },
+      { "<leader>fF", require("svim.utils.telescope").telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
+      { "<leader>fr", "<cmd>Telescope oldfiles<CR>", desc = "Recent" },
+
+      -- git
+      { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
+      { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
+
+      -- search
+      { "<leader>sa", "<cmd>Telescope autocommands<CR>", desc = "Auto Commands" },
+      { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<CR>", desc = "Buffer" },
+      { "<leader>sc", "<cmd>Telescope command_history<CR>", desc = "Command History" },
+      { "<leader>sC", "<cmd>Telescope commands<CR>", desc = "Commands" },
+      { "<leader>sd", "<cmd>Telescope diagnostics<CR>", desc = "Diagnostics" },
+      { "<leader>sg", require("svim.utils.telescope").telescope("live_grep"), desc = "Grep (root dir)" },
+      { "<leader>sG", require("svim.utils.telescope").telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+      { "<leader>sh", "<cmd>Telescope help_tags<CR>", desc = "Help Pages" },
+      { "<leader>sH", "<cmd>Telescope highlights<CR>", desc = "Search Highlight Groups" },
+      { "<leader>sk", "<cmd>Telescope keymaps<CR>", desc = "Key Maps" },
+      { "<leader>sM", "<cmd>Telescope man_pages<CR>", desc = "Man Pages" },
+      { "<leader>sm", "<cmd>Telescope marks<CR>", desc = "Jump to Mark" },
+      { "<leader>so", "<cmd>Telescope vim_options<CR>", desc = "Options" },
+      { "<leader>sR", "<cmd>Telescope resume<CR>", desc = "Resume" },
+      { "<leader>sw", require("svim.utils.telescope").telescope("grep_string"), desc = "Word (root dir)" },
+      { "<leader>sW", require("svim.utils.telescope").telescope("grep_string", { cwd = false }), desc = "Word (cwd)" },
+      { "<leader>uC", require("svim.utils.telescope").telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      {
+        "<leader>ss",
+        require("svim.utils.telescope").telescope("lsp_document_symbols", {
+          symbols = {
+            "Class",
+            "Function",
+            "Method",
+            "Constructor",
+            "Interface",
+            "Module",
+            "Struct",
+            "Trait",
+            "Field",
+            "Property",
+          },
+        }),
+        desc = "Goto Symbol",
+      },
+      {
+        "<leader>sS",
+        require("svim.utils.telescope").telescope("lsp_workspace_symbols", {
+          symbols = {
+            "Class",
+            "Function",
+            "Method",
+            "Constructor",
+            "Interface",
+            "Module",
+            "Struct",
+            "Trait",
+            "Field",
+            "Property",
+          },
+        }),
+        desc = "Goto Symbol (Workspace)",
+      },
+    },
+    opts = {
+      defaults = {
+        prompt_prefix = " ",
+        selection_caret = " ",
+        mappings = {
+          i = {
+            ["<c-t>"] = function(...)
+              return require("trouble.providers.telescope").open_with_trouble(...)
+            end,
+            ["<a-t>"] = function(...)
+              return require("trouble.providers.telescope").open_selected_with_trouble(...)
+            end,
+            ["<a-i>"] = function()
+              require("svim.utils.telescope").telescope("find_files", { no_ignore = true })()
+            end,
+            ["<a-h>"] = function()
+              require("svim.utils.telescope").telescope("find_files", { hidden = true })()
+            end,
+            ["<C-Down>"] = function(...)
+              return require("telescope.actions").cycle_history_next(...)
+            end,
+            ["<C-Up>"] = function(...)
+              return require("telescope.actions").cycle_history_prev(...)
+            end,
+            ["<C-f>"] = function(...)
+              return require("telescope.actions").preview_scrolling_down(...)
+            end,
+            ["<C-b>"] = function(...)
+              return require("telescope.actions").preview_scrolling_up(...)
+            end,
+          },
+          n = {
+            ["q"] = function(...)
+              return require("telescope.actions").close(...)
+            end,
+          },
+        },
+      },
+    },
+  },
+
 }
