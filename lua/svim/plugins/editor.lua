@@ -3,7 +3,59 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     cmd = "Neotree",
-    depends = { "nui.nvim", "nvim-web-devicons" }, -- specified in utils spec
+    dependencies = {
+      "nui.nvim", "nvim-web-devicons", "plenary.nvim", -- specified in utils spec
+      {
+        "s1n7ax/nvim-window-picker", -- specified here
+        version = "^1",
+        opts = {
+          autoselect_one = true,
+          include_current = false,
+          filter_rules = {
+              -- filter using buffer options
+              bo = {
+                -- if the file type is one of following, the window will be ignored
+                filetype = {
+                  "neo-tree",
+                  "neo-tree-popup",
+                  "notify",
+                },
+
+                -- if the buffer type is one of following, the window will be ignored
+                buftype = { "terminal", "quickfix" },
+              },
+            },
+            other_win_hl_color = '#e35e4f',
+        },
+      },
+    },
+    version = "^2",
+    -- Automatically open NeoTree if nvim was opened on a directory
+    init = function()
+      vim.g.neo_tree_remove_legacy_commands = 1
+      if vim.fn.argc() == 1 then
+        local stat = vim.loop.fs_stat(vim.fn.argv(0))
+        if stat and stat.type == "directory" then
+          require("neo-tree")
+        end
+      end
+    end,
+    deactivate = function()
+      vim.cmd([[Neotree close]])
+    end,
+    opts = {
+      enable_git_status = true,
+      enable_diagnostics = true,
+      filesystem = {
+        bind_to_cwd = false,
+        follow_current_file = true,
+      },
+      window = {
+        mappings = {
+          ["<space>"] = "none",
+        },
+      },
+    },
     keys = {
       {
         "<leader>fe",
@@ -21,30 +73,6 @@ return {
       },
       { "<C-n>", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
       { "<C-S-n>", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
-    },
-    deactivate = function()
-      vim.cmd([[Neotree close]])
-    end,
-    -- Automatically open NeoTree if nvim was opened on a directory
-    init = function()
-      vim.g.neo_tree_remove_legacy_commands = 1
-      if vim.fn.argc() == 1 then
-        local stat = vim.loop.fs_stat(vim.fn.argv(0))
-        if stat and stat.type == "directory" then
-          require("neo-tree")
-        end
-      end
-    end,
-    opts = {
-      filesystem = {
-        bind_to_cwd = false,
-        follow_current_file = true,
-      },
-      window = {
-        mappings = {
-          ["<space>"] = "none",
-        },
-      },
     },
   },
 
