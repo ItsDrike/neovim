@@ -43,8 +43,8 @@ function M.init()
 end
 
 ---Setup lazy (standalone, without installing plugins yet)
----@param plugins string|table
-function M.setup(plugins)
+---@param spec table[]
+function M.setup(spec)
   local lazy_available, Lazy = pcall(require, "lazy")
   if not lazy_available then
     vim.notify("Unable to run load plugins, lazy.nvim is not installed!", vim.log.levels.ERROR)
@@ -52,7 +52,7 @@ function M.setup(plugins)
   end
 
   local status_ok = xpcall(function()
-    Lazy.setup(plugins, M.lazy_opts)
+    Lazy.setup(vim.tbl_deep_extend("force", M.lazy_opts, { spec = spec }))
   end, debug.traceback)
 
   if not status_ok then

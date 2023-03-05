@@ -4,6 +4,10 @@ local M = {}
 M.neovim_version = "0.8"
 M.lazy_version = ">=9.1.0"
 
+M.plugin_spec = {
+  { import = "svim.plugins"},
+}
+
 -- Entrypoint (called from init.lua)
 function M.setup()
   M.ensure_nvim()
@@ -18,7 +22,7 @@ function M.setup()
   -- after installing missing plugins
   M.load("options")
 
-  PluginLoader.setup("svim.plugins")
+  PluginLoader.setup(M.plugin_spec)
   PluginLoader.ensure_plugins()
 
   -- Load configurations on VeryLazy if we didn't open any file
