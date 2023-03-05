@@ -33,7 +33,7 @@ function M.init()
       "clone",
       "--filter=blob:none",
       "--branch=stable",
-      "https://github.com/folke/lay.nvim.git",
+      "https://github.com/folke/lazy.nvim.git",
       install_dir,
     })
   end
