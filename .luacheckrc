@@ -1,4 +1,4 @@
---@diagnostic disable
+---@diagnostic disable
 -- vim: ft=lua tw=80
 
 stds.nvim = {
@@ -18,6 +18,6 @@ std = "lua51+nvim"
 self = false
 
 ignore = {
-    "631"  -- max_line_length
+    "631",  -- max_line_length
     "212/_.*",  -- unused argument, for vars with "_" prefix
 }
