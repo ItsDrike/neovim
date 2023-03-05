@@ -20,6 +20,7 @@ M.lazy_opts = {
     --version = "*", -- try installing the latest stable version for plugins that support semver
   },
   ui = { border = "rounded" },
+  lockfile = Path.join_paths(Path.config_dir, "lazy-lock.json"),
 }
 
 ---Initialize the plugin manager (folke/lazy.nvim), bootstrap if needed
