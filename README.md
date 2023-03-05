@@ -1,45 +1,41 @@
 # Stellar-Nvim
 
-Stellar-Nvim is an extensible configuration layer for Neovim. It takes advantage of modern Neovim 6.1+ features such as
+Stellar-Nvim is an extensible configuration for Neovim. It takes advantage of modern Neovim 8.0+ features such as
 the Language Server Protocol and Treesitter.
 
 Stellar-Nvim evolved from my personal neovim configuration and I made it because I wanted to have something extensible
 that others could use as well, if they wish to. I also love to experiment with my configuration and I figured that
 making something like this would allow me to have a really deep understanding of what's happening on the lower level.
 
-You are free to use this extensible configuration and customize it to your liking, or just learn from it and implement
-your own config from scratch! I don't expect this project to grow too big since again, this is mostly just something I
-threw together to learn about these newer features in neovim, but if you do like the project and you know of a way to
-improve it, it is fully open to pull requests or if you don't know how to make something yourself, you can make a
+You are free to use this configuration and customize it to your liking, or just learn from it and implement your own
+config from scratch! I don't expect this project to grow too big since again, this is mostly just something I threw
+together to learn about these newer features in neovim, but if you do like the project and you know of a way to improve
+it, it is fully open to pull requests or if you don't know how to make something yourself, you can make a
 feature request by opening a github issue.
 
 ## This project is still heavily Work In Progress
 
 I started working on this project only very recently and it is far from what I want it to be. While I do try to keep
-the master branch mostly stable and kind of usable, I can't promise you anything since this project isn't supposed to
+the main branch mostly stable and kind of usable, I can't promise you anything since this project isn't supposed to
 be ready just yet. If you do find some bug, please report it with an issue, or if you feel like it, you can always try
 to fix it yourself and submit a pull request, that's the best way to learn something new!
 
 ## Sample image
 
+NOTE: This sample image is outdated!
+
 ![Screenshot_2021-12-06_14-31-37](https://user-images.githubusercontent.com/20902250/144854879-f35de259-cea1-4415-9a3b-b093fe008836.png)
 
 ## Usage
 
-My goal is to make this configuration very easy to extend and customize purely by editing the settings files, rather
-than having to make extensive changes to the core code functionalities. This should make it very simple for anyone to
-use this project and customize it to their liking, even without a huge background in lua and neovim's lua API. 
+My goal with this repository is to make my neovim configuration easily available for anyone to take chunks of, or use
+in it's entirety. I'll be keeping the lua codebase more or less clean, and idiomatic (although I don't have nowhere
+near enough experience with lua to do that flawlessly, so I might make mistakes - Feel free to correct them in a PR!).
 
-That said, this project is mainly for my personal use, and if I know I will never want to change some option for my
-usage, I likely won't include it in the settings files on my own. For that reason, if you want to use this
-configuration, but there's a setting which you miss, don't wait until I add it, open an issue requesting it, or
-implement it on your own and PR it back.
-
-Note that the settings are currently very minimal and they most likely won't include something you may want, since this
-project is still in very early stages. There's also no documentation as to where each setting is, so you may end up
-having to dig for it on your own in the settings folder. Writing documentation is a big undertaking, and until the
-project is in a much more stable state, it would be changing very often and it wouldn't be worth writing, so it may be
-a good while until I add it.
+This means the code-base should be relatively easy to modify to fit your needs, if you so desire. I will also do my
+best to make it at least somewhat readable and possible to edit by someone without much lua knowledge (though some
+functions, especially those for the Language Server Protocol) can get pretty complex, because there's just no other way
+around it.
 
 ## Separation from my dotfiles
 
@@ -71,5 +67,6 @@ list of all projects which helped the existence of this repository:
 - [Jess Archer's dotfiles](https://github.com/jessarcher/dotfiles)
 - [lspsaga nvim plugin](https://github.com/glepnir/lspsaga.nvim)
 - [CosmicVim](https://github.com/CosmicNvim/CosmicNvim)
-- [LunarVim](https://github.com/LunarVim/LunarVim)
+- [LunarVim](https://github.com/LunarVim/LunarVim) (heavy inspiration)
+- [LazyVim](https://github.com/LazyVim/LazyVim) (heavy inspiration)
 - [Lewis6991's dotfiles](https://github.com/lewis6991/dotfiles)
