@@ -67,6 +67,4 @@ return {
       require("svim.plugins.lsp.setup").init()
     end
   },
-
-  -- TODO: handle "hrsh7th/cmp-nvim-lsp" in completions
 }
