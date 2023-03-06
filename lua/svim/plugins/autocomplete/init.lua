@@ -74,7 +74,7 @@ return {
           completion = cmp_window.bordered(),
           documentation = cmp_window.bordered(),
         },
-        -- formatting = { },
+        formatting = require("svim.plugins.autocomplete.formatting").get(),
         sources = require("svim.plugins.autocomplete.sources").get(),
         mapping = cmp.mapping.preset.insert(require("svim.plugins.autocomplete.keymaps").get()),
       }
