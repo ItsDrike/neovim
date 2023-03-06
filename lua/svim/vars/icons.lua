@@ -143,4 +143,13 @@ return {
     Value = "",
     Variable = "",
   },
+  misc = {
+    Robot = "ﮧ",
+    Squirrel = "",
+    Tag = "",
+    Watch = "",
+    Smiley = "ﲃ",
+    Package = "",
+    CircuitBoard = "",
+  },
 }
