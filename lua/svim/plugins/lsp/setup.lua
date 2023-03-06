@@ -13,7 +13,7 @@ M.diagnostic_opts = {
       { name = "DiagnosticSignError", text = icons.Error },
       { name = "DiagnosticSignWarn", text = icons.Warn },
       { name = "DiagnosticSignHint", text = icons.Hint },
-      { name = "DiagnosticSignInfo", text = icons.Info },
+      { name = "DiagnosticSignInfo", text = icons.Information },
     },
   },
   virtual_text = { spacing = 4, prefix = require("svim.vars.icons").ui.Circle },
