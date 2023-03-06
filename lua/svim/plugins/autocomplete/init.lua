@@ -38,12 +38,10 @@ return {
       "cmp-nvim-lsp",
       "cmp-buffer",
       "cmp-path",
-      "cmp-spell",
       "cmp_luasnip",
       "cmp-calc",
       "cmp-emoji",
       "nvim-cmp-buffer-lines",
-      "cmp-nvim-lsp-signature-help",
     },
     opts = function()
       local cmp = require("cmp")
