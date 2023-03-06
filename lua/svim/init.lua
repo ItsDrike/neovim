@@ -26,21 +26,23 @@ function M.setup()
   PluginLoader.setup(M.plugin_spec)
   PluginLoader.ensure_plugins()
 
-  -- Load configurations on VeryLazy if we didn't open any file
-  -- to speed things up
+  -- Load configurations on VeryLazy if we didn't open any file to speed things up
   if vim.fn.argc(-1) == 0 then
     vim.api.nvim_create_autocmd("User", {
       group = vim.api.nvim_create_augroup("StellarNvim", { clear = true }),
       pattern = "VeryLazy",
       callback = function()
-        M.load("autocmds")
         M.load("keymaps")
       end
     })
   else
-    M.load("autocmds")
     M.load("keymaps")
   end
+
+  -- Autocmds need to be loaded immediately, because they include Colorscheme autocmd
+  -- and VeryLazy runs after this, meaning we won't get our syntax overrides for the
+  -- dashboard screen.
+  M.load("autocmds")
 
   local colorscheme = require("svim.vars").colorscheme
   require("lazy.core.util").try(function()

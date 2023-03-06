@@ -47,7 +47,6 @@ return {
 
   -- dashboard (on vim enter without file/dir param)
   {
-    -- BUG: The custom highlight groups seems to get cleared resulting in no colors
     "goolord/alpha-nvim",
     event = "VimEnter",
     opts = function()
