@@ -61,19 +61,19 @@ end
 function M.set_kind(entry, vim_item)
   if entry.source.name == "copilot" then
     vim_item.kind = Icons.git.Octoface
-    vim_item.kind.hl_group = "CmpItemKindCopilot"
+    vim_item.kind_hl_group = "CmpItemKindCopilot"
   elseif entry.source.name == "cmp_tabnine" then
     vim_item.kind = Icons.misc.Robot
-    vim_item.kind.hl_group = "CmpItemKindTabnine"
+    vim_item.kind_hl_group = "CmpItemKindTabnine"
   elseif entry.source_name == "crates" then
     vim_item.kind = Icons.misc.Package
-    vim_item.kind.hl_group = "CmpItemKindCrate"
+    vim_item.kind_hl_group = "CmpItemKindCrate"
   elseif entry.source_name == "lab.quick_data" then
     vim_item.kind = Icons.misc.CircuitBoard
-    vim_item.kind.hl_group = "CmpItemKindConstant"
+    vim_item.kind_hl_group = "CmpItemKindConstant"
   elseif entry.source.name == "emoji" then
     vim_item.kind = Icons.misc.Smiley
-    vim_item.kind.hl_group = "CmpItemKindEmoji"
+    vim_item.kind_hl_group = "CmpItemKindEmoji"
   else
     vim_item.kind = Icons.kind[vim_item.kind]
   end
