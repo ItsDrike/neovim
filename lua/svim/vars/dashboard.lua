@@ -33,7 +33,7 @@ return {
   end,
   highlights = {
     header = { fg = "blue" },
-    footer = { fg = "gray" },
+    footer = { fg = "orange" },
     buttons = { fg = "lightgray" },
     shortcut = { fg = "yellow" },
   }
