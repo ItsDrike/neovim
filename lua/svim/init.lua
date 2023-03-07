@@ -35,10 +35,12 @@ function M.setup()
       pattern = "VeryLazy",
       callback = function()
         M.load("keymaps")
+        M.load("abbreviations")
       end
     })
   else
     M.load("keymaps")
+    M.load("abbreviations")
   end
 
   -- Autocmds need to be loaded immediately, because they include Colorscheme autocmd
@@ -58,7 +60,7 @@ function M.setup()
   })
 end
 
----@param name "autocmds" | "options" | "keymaps"
+---@param name "autocmds" | "options" | "keymaps" | "abbreviations"
 function M.load(name)
   local Util = require("lazy.core.util")
   local function _load(mod)
