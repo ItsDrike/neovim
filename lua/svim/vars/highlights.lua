@@ -16,4 +16,7 @@ return {
   CmpItemKindTabnine = { fg = "#ca42f0" },
   CmpItemKindCrate = { fg = "#f64d00" },
   CmpItemKindEmoji = { fg = "#fde030" },
+
+  -- LSP Semantic Tokens
+  ["@parameter"] = { fg = "#ff9060" },
 }
