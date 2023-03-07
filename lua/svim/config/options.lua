@@ -28,7 +28,7 @@ opt.listchars = { tab = " ", trail = "·" } -- specify what chars to show and
 opt.mouse = "a" -- allow the mouse to be used in neovim
 opt.number = true -- show line numbers
 opt.numberwidth = 4 -- set number column width (default 4)
-opt.pnumheight = 10 -- popup menu height
+opt.pumheight = 10 -- popup menu height
 opt.relativenumber = true -- relative line numbers
 opt.ruler = false
 opt.scrolloff = 8 -- minimal number of screen lines to keep above and below the cursor
