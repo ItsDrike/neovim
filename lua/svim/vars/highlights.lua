@@ -12,8 +12,8 @@ return {
   AlphaShortcut = dashboard_highlights.shortcut,
 
   -- Autocompletion (nvim-cmp) kind highlights
-  CmpItemKindCopilot = { fg = "#6CC644" },
-  CmpItemKindTabnine = { fg = "#CA42F0" },
-  CmpItemKindCrate = { fg = "#F64D00" },
-  CmpItemKindEmoji = { fg = "#FDE030" },
+  CmpItemKindCopilot = { fg = "#6cc644" },
+  CmpItemKindTabnine = { fg = "#ca42f0" },
+  CmpItemKindCrate = { fg = "#f64d00" },
+  CmpItemKindEmoji = { fg = "#fde030" },
 }
