@@ -368,4 +368,25 @@ return {
     },
   },
 
+  -- Terminal
+  {
+    "akinsho/toggleterm.nvim",
+    branch = "main",
+    opts = {
+      open_mapping = "<C-t>",
+      direction = "float",
+    },
+    cmd = {
+      "ToggleTerm",
+      "TermExec",
+      "ToggleTermToggleAll",
+      "ToggleTermSendCurrentLine",
+      "ToggleTermSendVisualLines",
+      "ToggleTermSendVisualSelection",
+    },
+    keys = {
+      { "<C-t>", function() require("toggleterm").toggle(1) end, desc = "Toggle Terminal" },
+    },
+  }
+
 }
