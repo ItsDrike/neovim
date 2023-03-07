@@ -5,7 +5,8 @@ return {
     event = "VeryLazy",
     opts = {
       lsp = {
-        -- Show a progress bar for language servers doing analysis
+        -- Show progress messages from language servers doing analysis
+        -- (See routes for how these are filtered)
         progress = {
           enabled = true,
         },
@@ -27,6 +28,15 @@ return {
           ["vim.lsp.stylize_markdown"] = true,
           ["cmp.entry.get_documentation"] = true,
         },
+      },
+      routes = {
+        -- Don't show lsp progress messages containing "Diagnosing" word, these show up
+        -- every time a buffer is updated, as the lang server reanalyzes the file, and
+        -- are very frequent, making them annoying.
+        {
+          filter = { event = "lsp", kind = "progress", find = "Diagnosing" },
+          opts = { skip = true },
+        }
       },
       presets = {
         bottom_search = true, -- use a classic bottom cmdline for search
