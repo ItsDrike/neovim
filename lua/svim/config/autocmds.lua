@@ -1,12 +1,11 @@
 -- This file is automatically loaded by lazyvim.plugins.config
 
-local function augroup(name)
-  return vim.api.nvim_create_augroup("svim_" .. name, { clear = true })
-end
+local Autocmds = require("svim.utils.autocmds")
+local augroup = Autocmds.augroup
 
 -- Add some extra highlight groups
 vim.api.nvim_create_autocmd({ "ColorScheme" }, {
-  group = augroup("svim_colorscheme"),
+  group = augroup("colorscheme"),
   callback = function()
     local highlights = require("svim.vars.highlights")
     for hl_group, val in pairs(highlights) do

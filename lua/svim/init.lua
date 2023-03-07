@@ -31,7 +31,7 @@ function M.setup()
   -- Load configurations on VeryLazy if we didn't open any file to speed things up
   if vim.fn.argc(-1) == 0 then
     vim.api.nvim_create_autocmd("User", {
-      group = vim.api.nvim_create_augroup("StellarNvim", { clear = true }),
+      group = require("svim.utils.autocmds").augroup("config_load"),
       pattern = "VeryLazy",
       callback = function()
         M.load("keymaps")

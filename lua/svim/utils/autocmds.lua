@@ -12,4 +12,9 @@ function M.clear_augroup(name)
   end)
 end
 
+---Wrapper around nvim_create_augroup, adding svim_ prefix, and clearing
+function M.augroup(name)
+  return vim.api.nvim_create_augroup("svim_" .. name, { clear = true })
+end
+
 return M
