@@ -18,6 +18,8 @@ function M.setup()
 
   M.ensure_lazy()
 
+  require("svim.utils.notify").lazy_notify()
+
   -- Load options here, before lazy setup
   -- This is needed to make sure options will be correctly applied
   -- after installing missing plugins
