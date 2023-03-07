@@ -50,7 +50,12 @@ return {
 
   -- Changes the lua_ls config for the neovim config, runtime and plugin dirs,
   -- automatically making lua-language-server pick up vim functions, neovim apis, ...
-  { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } }, lazy = true },
+  {
+    "folke/neodev.nvim",
+    version = "*",
+    opts = { experimental = { pathStrict = true } },
+    lazy = true
+  },
 
   -- Configurations for various language servers
   {
