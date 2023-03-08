@@ -29,4 +29,59 @@ return {
       },
     },
   },
+
+  -- Status line
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VimEnter",
+    opts = function()
+      local components = require("svim.plugins.lines.components")
+      return {
+        style = "default",
+        options = {
+          theme = "auto",
+          globalstatus = true,
+          icons_enabled = Icons.enabled,
+          component_separators = {
+            left = "", -- Icons.ui.DividerRight
+            right = "", -- Icons.ui.DividerLeft
+          },
+          section_separators = {
+            left = "", -- Icons.ui.DividerRight
+            right = "", -- Icons.ui.DividerLeft
+          },
+          disabled_filetypes = {
+            "alpha", -- Don't show status line in (alpha) dashboard
+          },
+        },
+        sections = {
+          lualine_a = { components.mode },
+          lualine_b = { components.branch },
+          lualine_c = { components.diff, components.python_env },
+          lualine_x = {
+            components.diagnostics,
+            components.treesitter_missing,
+            components.lsp,
+            components.spaces,
+            components.filetype,
+          },
+          lualine_y = { components.progress },
+          lualine_z = { components.location },
+        },
+        inactive_sections = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_c = { components.filename },
+          lualine_x = { components.filetype },
+          lualine_y = {},
+          lualine_z = { components.location },
+        },
+        -- If current filetype is in this list, inactive statusline is shown instead
+        ignore_focus = {},
+        -- Don't use lualine for tabline, we have bufferline
+        tabline = {},
+        extensions = {},
+      }
+    end,
+  }
 }

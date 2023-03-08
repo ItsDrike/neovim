@@ -155,4 +155,6 @@ return {
     Package = "",
     CircuitBoard = "",
   },
+  -- Display is only set when in GUI, so if it's not set, we're in TTY
+  enabled = os.getenv("DISPLAY") and true or false
 }
