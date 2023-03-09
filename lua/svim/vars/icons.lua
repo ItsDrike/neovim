@@ -53,6 +53,7 @@ return {
     ChevronShortRight = "",
     ChevronShortUp = "",
     Circle = "●",
+    Clock = "",
     Close = "",
     CloudDownload = "",
     Code = "",

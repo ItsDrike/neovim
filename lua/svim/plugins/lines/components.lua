@@ -208,4 +208,9 @@ return {
     padding = { left = 0, right = 0 },
     color = "SLProgress",
   },
+  time = {
+    function()
+      return Icons.ui.Clock .. " " .. os.date("%R")
+    end,
+  }
 }
