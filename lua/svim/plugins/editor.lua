@@ -111,6 +111,22 @@ return {
     },
   },
 
+  -- Highlight function arguments
+  {
+    "m-demare/hlargs.nvim",
+    dependencies = { "nvim-treesitter" }, -- specified in treesitter spec
+    event = { "BufReadPost", "BufNewFile" },
+    opts = {
+      excluded_argnames = {
+        declarations = {},
+        usages = {
+          -- python = { "self", "cls" },
+          -- lua = { "self', "_" }
+        }
+      },
+    },
+  },
+
   -- Remove buffers, preserving window layouts
   {
     "echasnovski/mini.bufremove",

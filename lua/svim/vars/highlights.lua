@@ -29,5 +29,5 @@ return {
   CmpItemKindEmoji = { fg = "#fde030" },
 
   -- LSP Semantic Tokens
-  ["@parameter"] = { fg = "#ff9060" },
+  -- ["@parameter"] = { fg = "#ff9060" }, -- Unnecessary with hlargs
 }
