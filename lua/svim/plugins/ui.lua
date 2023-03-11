@@ -82,7 +82,12 @@ return {
         },
       },
       routes = {
-        -- Use mini view for file written and undo/redo messages
+        -- Use mini view for several of the kind="" msg_show messages
+        -- (messages with kind="" are unclassified, and can represent various things)
+        -- This will use the mini view for the following messages:
+        -- * file written
+        -- * undo/redo
+        -- * indenting
         {
           view = "mini",
           filter = {
@@ -121,6 +126,30 @@ return {
             event = "msg_show",
             kind = "",
             find = "%d+ line less; after #",
+          },
+        },
+        {
+          view = "mini",
+          filter = {
+            event = "msg_show",
+            kind = "",
+            find = "%d+ changes?; before #"
+          },
+        },
+        {
+          view = "mini",
+          filter = {
+            event = "msg_show",
+            kind = "",
+            find = "%d+ changes?; after #"
+          },
+        },
+        {
+          view = "mini",
+          filter = {
+            event = "msg_show",
+            kind = "",
+            find = "%d+ lines [<>]ed %d times?",
           },
         },
 
