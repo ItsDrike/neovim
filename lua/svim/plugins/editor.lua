@@ -87,7 +87,26 @@ return {
           'treesitter',
           'regex',
       },
-      delay = 200
+      delay = 120,
+      -- Disable illuminate in these filetypes
+      filetypes_denylist = {
+        "dirvish",
+        "fugitive",
+        "alpha",
+        "NvimTree",
+        "neo-tree",
+        "lazy",
+        "neogitstatus",
+        "Trouble",
+        "lir",
+        "Outline",
+        "spectre_panel",
+        "toggleterm",
+        "DressingSelect",
+        "TelescopePrompt",
+      },
+      -- illuminate the word under the cursor
+      under_cursor = true,
     },
     config = function(_, opts)
       require("illuminate").configure(opts)
