@@ -150,7 +150,11 @@ return {
         -- every time a buffer is updated, as the lang server reanalyzes the file, and
         -- are very frequent, making them annoying.
         {
-          filter = { event = "lsp", kind = "progress", find = "Diagnosing" },
+          filter = {
+            event = "lsp",
+            kind = "progress",
+            find = "Diagnosing"
+          },
           opts = { skip = true },
         },
       },
