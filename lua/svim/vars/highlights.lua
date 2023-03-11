@@ -30,6 +30,10 @@ return {
   CmpItemKindCrate = { fg = "#f64d00" },
   CmpItemKindEmoji = { fg = "#fde030" },
 
+  -- Winbar (navic)
+  Winbar = { fg = normal_hl.foreground },
+  NavicSeparator = { fg = normal_hl.foreground },
+
   -- LSP Semantic Tokens
   -- ["@parameter"] = { fg = "#ff9060" }, -- Unnecessary with hlargs
 }
