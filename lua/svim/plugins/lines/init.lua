@@ -59,6 +59,7 @@ return {
           lualine_b = { components.branch },
           lualine_c = { components.diff, components.python_env },
           lualine_x = {
+            components.plugins,
             components.diagnostics,
             components.treesitter_missing,
             components.lsp,

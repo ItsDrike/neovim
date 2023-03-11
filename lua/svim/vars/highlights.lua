@@ -3,6 +3,7 @@ local dashboard_highlights = require("svim.vars.dashboard").highlights
 local statusline_hl = vim.api.nvim_get_hl_by_name("StatusLine", true)
 local cursorline_hl = vim.api.nvim_get_hl_by_name("CursorLine", true)
 local normal_hl = vim.api.nvim_get_hl_by_name("Normal", true)
+local special_hl = vim.api.nvim_get_hl_by_name("Special", true)
 
 return {
   -- Cursor line & Line number
@@ -21,6 +22,7 @@ return {
   SLBranchName = { fg = normal_hl.foreground, bg = cursorline_hl.background },
   SLSeparator = { fg = cursorline_hl.background, bg = statusline_hl.background },
   SLLangServers = { fg = normal_hl.foreground, bg = cursorline_hl.background, bold = false },
+  SLPluginUpdate = { fg = special_hl.foreground, bg = cursorline_hl.background },
 
   -- Autocompletion (nvim-cmp) kind highlights
   CmpItemKindCopilot = { fg = "#6cc644" },

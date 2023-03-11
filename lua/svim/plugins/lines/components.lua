@@ -42,6 +42,8 @@ return {
   },
   filename = {
     "filename",
+    path = 1,
+    symbols = { modified = Icons.ui.File, readonly = "", unnamed = "" },
     color = {},
     cond = nil,
   },
@@ -212,5 +214,10 @@ return {
     function()
       return Icons.ui.Clock .. " " .. os.date("%R")
     end,
+  },
+  plugins = {
+    require("lazy.status").updates,
+    cond = function() return require("lazy.status").has_updates() and Conditions.hide_in_width() end,
+    color = "SLPluginUpdate",
   }
 }
