@@ -81,7 +81,7 @@ return {
         ignore_focus = {},
         -- Don't use lualine for tabline, we have bufferline
         tabline = {},
-        extensions = {},
+        extensions = { "neo-tree" },
       }
     end,
   }
