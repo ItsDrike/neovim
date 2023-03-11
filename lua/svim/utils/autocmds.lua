@@ -12,9 +12,13 @@ function M.clear_augroup(name)
   end)
 end
 
----Wrapper around nvim_create_augroup, adding svim_ prefix, and clearing
-function M.augroup(name)
-  return vim.api.nvim_create_augroup("svim_" .. name, { clear = true })
+---Wrapper around nvim_create_augroup, adding svim_ prefix
+---@param name string
+---@param opts? table If no opts are passed, { clear = true } is used
+---@return integer id of the created group
+function M.augroup(name, opts)
+  opts = opts or { clear = true }
+  return vim.api.nvim_create_augroup("svim_" .. name, opts)
 end
 
 return M
