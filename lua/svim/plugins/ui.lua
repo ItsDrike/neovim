@@ -3,12 +3,57 @@ return {
   {
     "folke/noice.nvim",
     event = "VeryLazy",
+    dependencies = { "nui.nvim" }, -- specified in utils spec
     opts = {
+      cmdline = {
+        enabled = true, -- Enables Noice for cmdline UI
+        view = "cmdline_popup", -- view for rendering the cmdline. (change to `cmdline` for a classic cmdline at the bottom)
+      },
+      messages = {
+        -- NOTE: if you enable messages, then cmdline is enabled automatically
+        -- This is a current Neovim limitation.
+        --
+        -- NOTE: This tends to be very spammy without any filtering! While there is some
+        -- filters defined in routes, you may want to adjust this and add some more, to
+        -- suit your needs, or perhaps even disable messages all together.
+        enabled = true, -- Enables Noice messages UI
+        view = "notify", -- Default view for messages (set to mini for bottom right)
+        view_error = "notify", -- View for errors
+        view_warn = "notify", -- View for warnings
+        view_history = "messages", -- View for :messages
+        view_search = "virtualtext", -- View for search count messages (`false` to disable)
+      },
+      popupmenu = {
+        enabled = true, -- Enables the Noice popupmenu UI
+        ---@type 'nui'|'cmp'
+        backend = "nui", -- backend to use to show regular cmdline completions
+      },
+      redirect = {
+        view = "popup",
+        filter = { event = "msg_show" },
+      },
+      notify = {
+        -- Have noice override `vim.notify`.
+        -- By default, noice will use nvim-notify anyway, if available
+        -- causing same behavior as if nvim-notify was installed on it's own,
+        -- with the benefit of having these stored in the history view.
+        enabled = true,
+        view = "notify",
+      },
       lsp = {
-        -- Show progress messages from language servers doing analysis
-        -- (See routes for how these are filtered)
         progress = {
-          enabled = true,
+          -- Show progress messages from language servers doing analysis
+          --
+          -- NOTE: While cool, this gets very distracting as some language servers produce very
+          -- repetetive progress messages on every update (such as "Diagnosing..."). While these
+          -- can be configured to get skipped in routes based on specific pattern of the message,
+          -- every language server is different, and with some, it can be pretty hard to filter
+          -- out.
+          enabled = false,
+          format = "lsp_progress",
+          format_done = "lsp_progress_done",
+          throttle = 1000 / 30, -- frequency to update lsp progress message
+          view = "mini",
         },
         hover = {
           enabled = true,
@@ -24,19 +69,67 @@ return {
         },
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
         override = {
+          -- override the default lsp markdown formatter with Noice
           ["vim.lsp.utils.convert_input_to_markdown_lines"] = true,
+          -- override the lsp markdown formatter with Noice
           ["vim.lsp.stylize_markdown"] = true,
-          ["cmp.entry.get_documentation"] = true,
+          -- override cmp documentation with Noice (needs the other options to work)
+          ["cmp.entry.get_documentation"] = false,
         },
       },
       routes = {
+        -- HACK: Don't show messages like "ui.lua" line 36 of 46 --65%-- col 29
+        -- This can probably be done via some neovim option, but I can't for the
+        -- life of me figure out which with one, and well, this works.
+        {
+          filter = {
+            event = "msg_show",
+            kind = "",
+            find = "line %d+ of %d+ %-%-%d+%%%-%- col %d+"
+          },
+          opts = { skip = true },
+        },
+
+        -- HACK: Don't show messages like "ui.lua" 46L, 1192B
+        -- This can probably be done via some neovim option, but I can't for the
+        -- life of me figure out which with one, and well, this works.
+        {
+          filter = {
+            event = "msg_show",
+            kind = "",
+            find = " %d+L, %d+B",
+          },
+          opts = { skip = true },
+        },
+
+        --  Messages with kind "" are unknown, (things like file was written, undo messages, ...),
+        --  and we should generally avoid showing them in some custom view, as they can often
+        --  get quite distracting, just use the default cmdline one
+        {
+          view = "mini",
+          filter = {
+            event = "msg_show",
+            kind = "",
+          },
+        },
+
+        -- By default, noice skips msg_showmode messages, generally responsible for
+        -- messages such as `--INSERT--`. However this message kind also handle macro
+        -- messages, like `recording @q`, which we do want to see. Since we disable
+        -- these mode messages (`:set noshowmode`), we can re-enable these messages,
+        -- without causing too much annoyances.
+        {
+          view = "cmdline",
+          filter = { event = "msg_showmode" },
+        },
+
         -- Don't show lsp progress messages containing "Diagnosing" word, these show up
         -- every time a buffer is updated, as the lang server reanalyzes the file, and
         -- are very frequent, making them annoying.
         {
           filter = { event = "lsp", kind = "progress", find = "Diagnosing" },
           opts = { skip = true },
-        }
+        },
       },
       presets = {
         bottom_search = true, -- use a classic bottom cmdline for search
