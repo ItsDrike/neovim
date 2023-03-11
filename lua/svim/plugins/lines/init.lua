@@ -4,7 +4,7 @@ return {
   -- bufferline (show opened buffers on top)
   {
     "akinsho/bufferline.nvim",
-    event = "VimEnter",
+    event = "VeryLazy",
     keys = {
       { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
       { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
@@ -65,7 +65,7 @@ return {
   -- Status line
   {
     "nvim-lualine/lualine.nvim",
-    event = "VimEnter",
+    event = "VeryLazy",
     opts = function()
       local components = require("svim.plugins.lines.components")
       return {
