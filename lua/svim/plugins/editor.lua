@@ -201,6 +201,7 @@ return {
   -- Highlight todo comments
   {
     "folke/todo-comments.nvim",
+    version = "*",
     cmd = { "TodoTrouble", "TodoTelescope" },
     event = { "BufReadPost", "BufNewFile" },
     config = true,
@@ -250,6 +251,7 @@ return {
   -- Show defined keybinds
   {
     "folke/which-key.nvim",
+    version = "*",
     event = "VeryLazy",
     cmd = "WhichKey",
     opts = {

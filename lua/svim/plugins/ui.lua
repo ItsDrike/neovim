@@ -4,6 +4,7 @@ return {
     "folke/noice.nvim",
     event = "VeryLazy",
     dependencies = { "nui.nvim" }, -- specified in utils spec
+    version = "*",
     opts = {
       cmdline = {
         enabled = true, -- Enables Noice for cmdline UI

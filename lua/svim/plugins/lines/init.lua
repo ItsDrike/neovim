@@ -4,6 +4,7 @@ return {
   -- bufferline (show opened buffers on top)
   {
     "akinsho/bufferline.nvim",
+    version = "*",
     event = "VeryLazy",
     keys = {
       { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
