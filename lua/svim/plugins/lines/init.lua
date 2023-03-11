@@ -30,6 +30,38 @@ return {
     },
   },
 
+  -- LSP symbol navigation for lualine/winbar
+  {
+    "SmiteshP/nvim-navic",
+    event = "VeryLazy",
+    init = function()
+      vim.g.navic_silence = true
+      require("svim.utils.lsp").on_attach(function(client, buffer)
+        if client.server_capabilities.documentSymbolProvider then
+          require("nvim-navic").attach(client, buffer)
+        end
+      end)
+    end,
+    opts = function()
+      local kind_icons_spaced = {}
+      for name, icon in pairs(Icons.kind) do
+        kind_icons_spaced[name] = icon .. " "
+      end
+
+      return {
+        separator = " " .. Icons.ui.ChevronRight .. " ",
+        highlight = true,
+        depth_limit = 5,
+        depth_limit_indicator = "..",
+        icons = kind_icons_spaced,
+      }
+    end,
+    config = function(_, opts)
+      require("svim.plugins.lines.navic").create_winbar()
+      require("nvim-navic").setup(opts)
+    end
+  },
+
   -- Status line
   {
     "nvim-lualine/lualine.nvim",
