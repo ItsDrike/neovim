@@ -404,6 +404,7 @@ return {
   },
 
   -- Terminal
+  -- TODO: Open toggleterm in proper directory (perhaps use the get_root_dir util func?)
   {
     "akinsho/toggleterm.nvim",
     branch = "main",
