@@ -17,7 +17,7 @@ return {
         -- filters defined in routes, you may want to adjust this and add some more, to
         -- suit your needs, or perhaps even disable messages all together.
         enabled = true, -- Enables Noice messages UI
-        view = "notify", -- Default view for messages (set to mini for bottom right)
+        view = "notify", -- Default view for messages
         view_error = "notify", -- View for errors
         view_warn = "notify", -- View for warnings
         view_history = "messages", -- View for :messages
@@ -82,38 +82,45 @@ return {
         },
       },
       routes = {
-        -- HACK: Don't show messages like "ui.lua" line 36 of 46 --65%-- col 29
-        -- This can probably be done via some neovim option, but I can't for the
-        -- life of me figure out which with one, and well, this works.
-        {
-          filter = {
-            event = "msg_show",
-            kind = "",
-            find = "line %d+ of %d+ %-%-%d+%%%-%- col %d+"
-          },
-          opts = { skip = true },
-        },
-
-        -- HACK: Don't show messages like "ui.lua" 46L, 1192B
-        -- This can probably be done via some neovim option, but I can't for the
-        -- life of me figure out which with one, and well, this works.
-        {
-          filter = {
-            event = "msg_show",
-            kind = "",
-            find = " %d+L, %d+B",
-          },
-          opts = { skip = true },
-        },
-
-        --  Messages with kind "" are unknown, (things like file was written, undo messages, ...),
-        --  and we should generally avoid showing them in some custom view, as they can often
-        --  get quite distracting, just use the default cmdline one
+        -- Use mini view for file written and undo/redo messages
         {
           view = "mini",
           filter = {
             event = "msg_show",
             kind = "",
+            find = "written",
+          },
+        },
+        {
+          view = "mini",
+          filter = {
+            event = "msg_show",
+            kind = "",
+            find = "%d+ more line; before #",
+          },
+        },
+        {
+          view = "mini",
+          filter = {
+            event = "msg_show",
+            kind = "",
+            find = "%d+ line less; before #",
+          },
+        },
+        {
+          view = "mini",
+          filter = {
+            event = "msg_show",
+            kind = "",
+            find = "%d+ more line; after #",
+          },
+        },
+        {
+          view = "mini",
+          filter = {
+            event = "msg_show",
+            kind = "",
+            find = "%d+ line less; after #",
           },
         },
 
