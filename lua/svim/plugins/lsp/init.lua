@@ -41,7 +41,7 @@ return {
     },
     cmd = { "NullLsInstall", "NullLsUninstall", "NullLsLog", "NullLsInfo" },
     version = "*",
-    lazy = false,
+    lazy = true,
   },
 
 
