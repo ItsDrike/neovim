@@ -117,6 +117,25 @@ return {
           },
         },
 
+        -- Usi mini view for "Search hit BOTTOM/TOP" warning messages and
+        -- pattern not found messages. No need for full notifications here.
+        {
+          view = "mini",
+          filter = {
+            event = "msg_show",
+            kind = "wmsg",
+            find = "search hit %u+, continuing at %u+",
+          },
+        },
+        {
+          view = "mini",
+          filter = {
+            event = "msg_show",
+            kind = "emsg",
+            find = "E486: Pattern not found: ",
+          },
+        },
+
         -- By default, noice skips msg_showmode messages, generally responsible for
         -- messages such as `--INSERT--`. However this message kind also handle macro
         -- messages, like `recording @q`, which we do want to see. Since we disable
