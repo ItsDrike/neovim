@@ -108,7 +108,7 @@ opt.shortmess = {
   c = false, -- don't give the ins-completion-menu messages; for example, "-- XXX completion (YYY)", "match 1 of 2", "The only match", "Pattern not found", "Back at original", etc.
   C = false, -- don't give messages while scanning for ins-completion items, for instance "scanning tags"
   q = false, -- use "recording" instead of "recording @a"
-  F = false, -- don't give the file info when editing a file, like :silent was used in command
+  F = true, -- don't give the file info when editing a file, like :silent was used in command
   S = false, -- do not show search count message when searching, e.g. "[1/5]"
 }
 
