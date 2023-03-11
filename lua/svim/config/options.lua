@@ -53,7 +53,6 @@ opt.tabstop = 2 -- insert 2 spaces for a tab character
 opt.termguicolors = true -- set term gui colors (most terminal support this)
 opt.timeoutlen = 1000 -- time to wait for a mapped sequence to complete (in milliseconds)
 opt.title = true -- set the title of window to the value of the titlestring
--- opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
 opt.undodir = Path.undodir
 opt.undofile = true -- enable persistent undo (undos will be stored in undodir)
 opt.undolevels = 10000 -- maximum number of changes that can be undone (undo data is kept in memory)
