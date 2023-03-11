@@ -105,8 +105,11 @@ return {
   },
 
   -- Completion source for nvim commandline
+  -- NOTE: If you're using noice, make sure to also change the backend for cmdline
+  -- completions from nui to cmp, otherwise this will not work
   {
     "hrsh7th/cmp-cmdline",
+    enabled = false,
     event = { "CmdLineEnter" },
     dependencies = {
        -- specified in autocomplete spec (above)
