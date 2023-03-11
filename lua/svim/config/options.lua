@@ -2,6 +2,10 @@
 
 local Path = require("svim.utils.path")
 
+if not Path.is_directory(Path.undodir) then
+  vim.fn.mkdir(Path.undodir, "p")
+end
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
