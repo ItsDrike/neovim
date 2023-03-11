@@ -51,7 +51,9 @@ return {
             right = "", -- Icons.ui.DividerLeft
           },
           disabled_filetypes = {
-            "alpha", -- Don't show status line in (alpha) dashboard
+            statusline = {
+              "alpha", -- Don't show status line in (alpha) dashboard
+            }
           },
         },
         sections = {
