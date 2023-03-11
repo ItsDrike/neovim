@@ -5,6 +5,9 @@ local icons = require("svim.vars.icons").diagnostics
 -- Use LSP's highlight capabilities if available for highlighting
 M.document_highlight = true
 
+-- Show LSP progress messages
+M.show_lsp_progress = false
+
 -- options for vim.diagnostic.config
 M.diagnostic_opts = {
   signs = {
@@ -56,6 +59,47 @@ M.mason_null_ls_opts = {
 }
 
 M._common_capabilities = nil
+
+-- Gloabl helper variables for show_lsp_progress function
+M._null_ls_token = nil
+M._ltex_token = nil
+
+local function show_lsp_progress(_, result, ctx)
+  local value = result.value
+  if not value.kind then
+    return
+  end
+
+  local client_id = ctx.client_id
+  local name = vim.lsp.get_client_by_id(client_id).name
+
+  if name == "null-ls" then
+    -- Prevent repeting messages
+    if result.token == M._null_ls_token then
+      return
+    end
+    if value.title == "formatting" then
+      M._null_ls_token = result.token
+      return
+    end
+  end
+
+  if name == "ltex" then
+    if result.token == M._ltex_token then
+      return
+    end
+    if value.title == "Checking document" then
+      M._ltex_token = result.token
+      return
+    end
+  end
+
+  if value.message == nil or value.title == nil then
+    return
+  end
+
+  vim.notify(value.message, "info", { title = value.title })
+end
 
 ---Get common capabilities shared for all language servers
 ---Cache the results if ran more than once
@@ -115,7 +159,7 @@ end
 
 ---Configure style of floating windows for hover and signature help, unless they're already handled by noice
 function M.setup_handlers()
-  local noice_hover, noice_signature
+  local noice_hover, noice_signature, noice_progress
   ---@cast noice_hover boolean
   ---@cast noice_signature boolean
   if require("svim.utils.plugins").has("noice.nvim") then
@@ -124,10 +168,12 @@ function M.setup_handlers()
       vim.notify("Noice was marked installed, but required failed!", vim.log.levels.ERROR)
       noice_hover = false
       noice_signature = false
+      noice_progress = false
     else
       -- Any of the fields can be nil
       noice_hover = noice_config.options.lsp and noice_config.options.lsp.hover and noice_config.options.lsp.hover.enabled or false
       noice_signature = noice_config.options.lsp and noice_config.options.lsp.signature and noice_config.options.lsp.signature.enabled or false
+      noice_progress = noice_config.options.lsp and noice_config.options.lsp.progress and noice_config.options.lsp.progress.enabled or false
       end
     end
 
@@ -136,6 +182,9 @@ function M.setup_handlers()
   end
   if not noice_signature then
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, M.float_opts)
+  end
+  if not noice_progress and M.show_lsp_progress then
+    vim.lsp.handlers["$/progress"] = show_lsp_progress
   end
 end
 

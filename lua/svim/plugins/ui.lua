@@ -49,6 +49,10 @@ return {
           -- can be configured to get skipped in routes based on specific pattern of the message,
           -- every language server is different, and with some, it can be pretty hard to filter
           -- out.
+          --
+          -- If desired, there is an alternative implementation using vim.notify in plugins/lsp,
+          -- which tries to avoid repetetive messages, but it's far from perfect and disabled
+          -- by default.
           enabled = false,
           format = "lsp_progress",
           format_done = "lsp_progress_done",
