@@ -188,6 +188,23 @@ function M.setup_handlers()
   end
 end
 
+---Get configuration options for given language server
+---@param server_name string
+---@return table
+function M.get_config(server_name)
+  local defaults = {
+    capabilities = M.get_common_capabilities(),
+  }
+
+  local has_custom_provider, custom_config = pcall(require, "svim/plugins/lsp/providers/" .. server_name)
+  if has_custom_provider then
+    defaults = vim.tbl_deep_extend("force", defaults, custom_config)
+  end
+
+  return defaults
+
+end
+
 ---Function responsible for setting up given language server (with lspconfig)
 ---@param server string
 function M.setup(server)
@@ -198,7 +215,7 @@ function M.setup(server)
     error("Exiting")
   end
 
-  lspconfig[server].setup({ capabilities = M.get_common_capabilities() })
+  lspconfig[server].setup(M.get_config(server))
 end
 
 ---Function responsible for setting up given language server (with lspconfig)

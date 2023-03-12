@@ -72,4 +72,10 @@ return {
       require("svim.plugins.lsp.setup").init()
     end
   },
+
+  -- JSON Schemas for common documents (such as github workflows, circleci, ...)
+  {
+    "b0o/schemastore.nvim",
+    lazy = true,
+  },
 }
