@@ -198,7 +198,7 @@ function M.setup(server)
     error("Exiting")
   end
 
-  lspconfig[server].setup(M.get_common_capabilities())
+  lspconfig[server].setup({ capabilities = M.get_common_capabilities() })
 end
 
 ---Function responsible for setting up given language server (with lspconfig)
