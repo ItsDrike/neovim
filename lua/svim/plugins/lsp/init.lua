@@ -46,7 +46,25 @@ return {
 
 
   -- Configuring language servers using JSON files (both global, and local/project settings)
-  { "folke/neoconf.nvim", cmd = "Neoconf", config = true, lazy = true },
+  {
+    "folke/neoconf.nvim",
+    cmd = "Neoconf",
+    opts = {
+      -- name of the local settings files
+      local_settings = ".neoconf.json",
+      -- name of the global settings file in your Neovim config directory
+      global_settings = "neoconf.json",
+      -- import existing settinsg from other plugins
+      import = {
+        vscode = true, -- local .vscode/settings.json
+        coc = true, -- global/local coc-settings.json
+        nlsp = true, -- global/local nlsp-settings.nvim json settings
+      },
+      -- send new configuration to lsp clients when changing json settings
+      live_reload = true,
+    },
+    lazy = true
+  },
 
   -- Changes the lua_ls config for the neovim config, runtime and plugin dirs,
   -- automatically making lua-language-server pick up vim functions, neovim apis, ...
