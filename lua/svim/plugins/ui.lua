@@ -89,6 +89,8 @@ return {
         -- * file written
         -- * undo/redo
         -- * indenting
+        -- * search hit BOTTOM/TOP, continuing at TOP/BOTTOM
+        -- * Pattern not found
         {
           view = "mini",
           filter = {
@@ -102,47 +104,39 @@ return {
           filter = {
             event = "msg_show",
             kind = "",
-            find = "%d+ more line; before #",
+            find = "Already at oldest change",
           },
         },
         {
           view = "mini",
           filter = {
             event = "msg_show",
-            kind = "",
-            find = "%d+ line less; before #",
+            kind = {"echo", ""},
+            find = "%d+ more lines?;",
           },
         },
         {
           view = "mini",
           filter = {
             event = "msg_show",
-            kind = "",
-            find = "%d+ more line; after #",
+            kind = {"echo", ""},
+            find = "%d+ lines? less;",
           },
         },
         {
           view = "mini",
           filter = {
             event = "msg_show",
-            kind = "",
-            find = "%d+ line less; after #",
+            kind = {"echo", ""},
+            find = "%d+ changes?;"
           },
         },
         {
           view = "mini",
           filter = {
             event = "msg_show",
-            kind = "",
-            find = "%d+ changes?; before #"
-          },
-        },
-        {
-          view = "mini",
-          filter = {
-            event = "msg_show",
-            kind = "",
-            find = "%d+ changes?; after #"
+            kind = {"echo", ""},
+            find = "%d+ fewer lines?",
           },
         },
         {
@@ -153,9 +147,6 @@ return {
             find = "%d+ lines [<>]ed %d times?",
           },
         },
-
-        -- Usi mini view for "Search hit BOTTOM/TOP" warning messages and
-        -- pattern not found messages. No need for full notifications here.
         {
           view = "mini",
           filter = {
