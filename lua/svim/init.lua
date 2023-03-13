@@ -7,6 +7,7 @@ M.lazy_version = ">=9.1.0"
 M.plugin_spec = {
   { import = "svim.plugins"},
   { import = "svim.plugins.extra.wakatime" },
+  { import = "svim.plugins.extra.indents" },
 }
 
 -- Entrypoint (called from init.lua)
