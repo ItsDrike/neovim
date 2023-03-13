@@ -73,31 +73,27 @@ function M.add_winbar()
   end
 
   -- TODO: Consider not showing the filename if bufferline.nvim is visible
+  -- TODO: Don't show the bufferline in some filetypes (floatterm)
 
-  local location_added = false
-  local navic_location = M.get_navic_location()
-  if navic_location ~= nil and navic_location ~= "" then
-    location_added = true
+  -- Add circle icon if modified
+  local buf_option_ok, buf_option = pcall(vim.api.nvim_buf_get_option, 0, "mod")
+  if buf_option_ok and buf_option then
+    local mod = "%#LspCodeLens#" .. icons.ui.Circle .. "%*"
+    value = value .. " " .. mod
   end
+
+  -- Add navic LSP location
+  local navic_location = M.get_navic_location()
   value = value .. " " .. navic_location
 
-  local status_ok, buf_option = pcall(vim.api.nvim_buf_get_option, 0, "mod")
-  if status_ok and buf_option then
-    local mod = "%#LspCodeLens#" .. icons.ui.Circle .. "%*"
-    if location_added then
-      value = value .. " " .. mod
-    else
-      value = value .. mod
-    end
-  end
-
+  -- Add tumber of tabs
   local num_tabs = #vim.api.nvim_list_tabpages()
-
   if num_tabs > 1 and value ~= nil and value ~= "" then
     local tabpage_number = tostring(vim.api.nvim_tabpage_get_number(0))
     value = value .. "%=" .. tabpage_number .. "/" .. tostring(num_tabs)
   end
 
+  -- Try to create the winbar
   local status_ok, _ = pcall(vim.api.nvim_set_option_value, "winbar", value, { scope = "local" })
   if not status_ok then
     return
