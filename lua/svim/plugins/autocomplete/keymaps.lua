@@ -20,7 +20,7 @@ local function _seek_luasnip_cursor_node()
   local snippet = node.parent.snippet
   local exit_node = snippet.insert_nodes[0]
 
-  local pos = vim.api.nvim_win_get_cursor()
+  local pos = vim.api.nvim_win_get_cursor(0)
   pos[1] = pos[1] - 1
 
   -- Exit early if we're past the exit node
