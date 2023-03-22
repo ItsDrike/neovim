@@ -250,6 +250,32 @@ function M.on_attach(client, bufnr)
   if M.document_highlight then
     M.setup_document_highlight(client, bufnr)
   end
+
+  -- Neovim automatically overrides formatexpr when a language server has
+  -- documentFormattingProvider capability, changing it to calling LSP's format functionality.
+  --
+  -- However this causes an issue with null-ls, which declares all capabilities, so that it can
+  -- support any of it's underlying sources, which however might not actually have formatting
+  -- ability. (Such as with prettier attaching to markdown, but not having range formatting).
+  --
+  -- This then causes using gq to wrap text to not do anything, since it just calls LSP's format,
+  -- which it can't do.
+  --
+  -- This should only affect null-ls though, Since normal LSP servers don't behave like this, and
+  -- they only declare those abilities that they actually have.
+  --
+  -- HACK: This resets formatexpr when using null-ls on a filetype that doesn't have a source
+  -- capable of doing formatting, even though null-ls declares that it does.
+  --
+  -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1131
+  if client.server_capabilities.documentFormattingProvider then
+    if client.name == "null-ls" and not require("null-ls.generators").can_run(
+      vim.bo[bufnr].filetype,
+      require("null-ls.methods").lsp.FORMATTING
+    ) then
+      vim.bo[bufnr].formatexpr = nil
+    end
+  end
 end
 
 ---Function ran just before a language server is detached from a buffer
