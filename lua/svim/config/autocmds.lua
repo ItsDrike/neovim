@@ -39,6 +39,15 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "Close certain filetypes with q",
 })
 
+-- Resize splits if window got changed
+vim.api.nvim_create_autocmd({ "VimResized" }, {
+  group = augroup("resize_splits"),
+  callback = function()
+    vim.cmd("tabdo wincmd =")
+  end,
+  desc = "Resize splits if window is resized",
+})
+
 -- Add some extra highlight groups
 for _, highlight_conf in ipairs(require("svim.vars.highlights")) do
   require("svim.utils.colorscheme").define_highlights(
