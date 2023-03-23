@@ -13,7 +13,7 @@ local opt = vim.opt
 
 opt.backup = false -- creates a backup file
 opt.clipboard = "unnamedplus" -- use system clipboard for yank/paste
-opt.completeopt = { "menuone", "noselect" }
+opt.completeopt = { "menu", "menuone", "noselect" }
 opt.conceallevel = 3 -- hide * markup for bold and italic
 opt.confirm = true -- confirm to save changes before exiting modified buffer
 opt.cursorline = true -- enable highlighting of the current line
