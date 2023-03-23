@@ -20,6 +20,4 @@ local highlights = {
   ["@documentation"] = { fg = "#6a9955" },
 }
 
-for hl_group, val in pairs(highlights) do
-  vim.api.nvim_set_hl(0, hl_group, val)
-end
+require("svim.utils.colorscheme").define_highlights("robot", highlights, true, "onedarker", true)
